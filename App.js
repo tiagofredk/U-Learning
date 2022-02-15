@@ -1,13 +1,15 @@
 import { NavigationContainer } from '@react-navigation/native';
-import MainPage from './src/components/landing_page/MainPage';
+import { StatusBar } from 'expo-status-bar';
 import { MainContextProvider } from './src/context/MainContext';
+import StackNavigator from './src/StackNavigator';
 
 export default function App() {
   
   return (
     <NavigationContainer>
       <MainContextProvider>
-         <MainPage/>
+         <StackNavigator/>
+         <StatusBar style="dark"/>
       </MainContextProvider>
     </NavigationContainer>
   );
