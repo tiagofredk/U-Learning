@@ -1,17 +1,21 @@
-import { useNavigation } from "@react-navigation/native";
 import React, { useContext, useState } from "react";
 
 export const MainContext = React.createContext();
 
 export const MainContextProvider = ({ children }) => {
   const [user, setUser] = useState("This is a context value");
-  const navigation = useNavigation();
+  const [isLogedIn, setIsLogedIn ] = useState(false);
+  const [profile, setProfile] = useState("");
 
   return (
     <MainContext.Provider
       value={{
         user,
-        setUser
+        setUser,
+        isLogedIn, 
+        setIsLogedIn,
+        profile, 
+        setProfile
       }}
     >
       {children}
