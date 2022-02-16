@@ -6,11 +6,13 @@ import FormContainer from './FormContainer'
 import FormInput from './FormInput'
 import { MainContext } from '../../context/MainContext'
 import FormSubmitButton from './FormSubmitButton'
+import FormHeader from './FormHeader'
+import { isValidEmail, isValidObjField, updateError } from '../utils/methods';
 
 
 const Login = () => {
   const navigation = useNavigation();
-
+  
   const { setIsLoggedIn, setProfile } = useContext(MainContext);
   const [userInfo, setUserInfo] = useState({
     email: '',
@@ -58,8 +60,11 @@ const Login = () => {
   return (
     <FormContainer>
     <SafeAreaView>
-      <Text>Login</Text>
-      
+      <FormHeader
+      leftHeading='Login'
+      rightHeading='Back'
+      subHeading='Enter with your e-mail and password'
+      />
       <FormInput
         value={email}
         onChangeText={value => handleOnChangeText(value, 'email')}
