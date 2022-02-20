@@ -4,7 +4,7 @@ export const MainContext = React.createContext();
 
 export const MainContextProvider = ({ children }) => {
   const [user, setUser] = useState("This is a context value");
-  const [isLogedIn, setIsLogedIn ] = useState(false);
+  const [isLogedIn, setIsLoggedIn ] = useState(false);
   const [profile, setProfile] = useState("");
 
   return (
@@ -13,7 +13,7 @@ export const MainContextProvider = ({ children }) => {
         user,
         setUser,
         isLogedIn, 
-        setIsLogedIn,
+        setIsLoggedIn,
         profile, 
         setProfile
       }}
