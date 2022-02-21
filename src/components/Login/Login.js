@@ -14,7 +14,7 @@ console.log();
 const Login = () => {
   const navigation = useNavigation();
 
-  const {isLogedIn, setIsLoggedIn } = useContext(MainContext);
+  const {isLogedIn, setIsLogedIn } = useContext(MainContext);
   const [userInfo, setUserInfo] = useState({
     email: '',
     password: '',
@@ -44,7 +44,7 @@ const Login = () => {
   const submitForm = async () => {
 
     if (isValidForm()) {
-      // console.log(userInfo);
+      
       try {
 
         let config = {
@@ -60,27 +60,12 @@ const Login = () => {
           config
         );
 
-        // const res = fetch('https://ulearning-backend-mwnxs09vr-tiagofredk.vercel.app/login', {
-        //   method: 'POST',
-        //   headers: {
-        //     'Content-Type': 'application/json'
-        //   },
-        //   body: JSON.stringify(
-        //     userInfo
-        //   )
-
-        // }).then(res => res.json())
-        // .then(data=> {
-        //   console.log(data);
-        // })
-
-        // console.log("response from fetch");
         console.log(await res.data);
 
         if (res.data) {
           setUserInfo({ email: '', password: '' });
           // setProfile(res.data.user);
-          setIsLoggedIn(true);
+          setIsLogedIn(true);
           console.log(isLogedIn);
           navigation.navigate("Home");
         }

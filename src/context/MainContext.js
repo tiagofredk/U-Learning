@@ -3,8 +3,8 @@ import React, { useContext, useState } from "react";
 export const MainContext = React.createContext();
 
 export const MainContextProvider = ({ children }) => {
-  const [user, setUser] = useState("User INFO");
-  const [isLogedIn, setIsLoggedIn ] = useState(false);
+  const [user, setUser] = useState("Dumy user");
+  const [isLogedIn, setIsLogedIn ] = useState(false);
   const [profile, setProfile] = useState("");
 
   return (
@@ -13,7 +13,7 @@ export const MainContextProvider = ({ children }) => {
         user,
         setUser,
         isLogedIn, 
-        setIsLoggedIn,
+        setIsLogedIn,
         profile, 
         setProfile
       }}
