@@ -14,7 +14,7 @@ console.log();
 const Login = () => {
   const navigation = useNavigation();
 
-  const {isLogedIn, setIsLogedIn } = useContext(MainContext);
+  const {setUser, isLogedIn, setIsLogedIn, profile, setProfile } = useContext(MainContext);
   const [userInfo, setUserInfo] = useState({
     email: '',
     password: '',
@@ -23,8 +23,7 @@ const Login = () => {
   const [error, setError] = useState('');
 
   const { email, password } = userInfo;
-  // console.log(userInfo);
-
+  
   const handleOnChangeText = (value, fieldName) => {
     setUserInfo({ ...userInfo, [fieldName]: value });
   };
@@ -55,21 +54,26 @@ const Login = () => {
         };
 
         const res = await axios.post(
-          'https://ulearning-backend-mwnxs09vr-tiagofredk.vercel.app/login',
+          "https://ulearning-backend.vercel.app/login",
           userInfo,
           config
-        );
-
-        console.log(await res.data);
+        )
+        
+        // let userProfile={}
+        let fullname = res.data.fullname;
+        setUser(res.data.username)
+                
+        let userProfile={fullname, email}
+        
+        setProfile(userProfile);
+        
 
         if (res.data) {
           setUserInfo({ email: '', password: '' });
-          // setProfile(res.data.user);
           setIsLogedIn(true);
-          console.log(isLogedIn);
           navigation.navigate("Home");
         }
-        console.log(isLogedIn);
+        
       } catch (error) {
         console.log(error);
       }

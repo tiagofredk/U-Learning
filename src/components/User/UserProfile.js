@@ -8,33 +8,28 @@ import axios from 'axios'
 
 const UserProfile = () => {
   const navigation = useNavigation()
-  const { user, isLogedIn , setIsLogedIn } = useContext(MainContext)
+  const { user, isLogedIn , setIsLogedIn, profile } = useContext(MainContext)
 
-  useEffect(() => {
-    if (isLogedIn) {
-        console.log("use efect Login");
-        console.log(isLogedIn);
-        console.log(user);
-    }
-    console.log(isLogedIn);
-}, [isLogedIn, setIsLogedIn]);
+//   useEffect(() => {
+//     if (isLogedIn) {
+//         console.log("use efect Login isLogedIn");
+//         console.log(user);
+//         console.log(profile);
+//     }
+//     console.log(isLogedIn);
+// }, [isLogedIn, setIsLogedIn]);
 
-    
     const logout = async () => {
       try{
           let config = {
               header: {"content-type": "aplication/json"}
           }
           const data = await axios.get(
-            "https://ulearning-backend-mwnxs09vr-tiagofredk.vercel.app/logout",
+            "https://ulearning-backend.vercel.app/logout",
             config)
 
-          console.log(data);
           setIsLogedIn(false);
-          // setUser("Ana")
-          // console.log("logout");
-          // console.log(isRegistered);
-          // console.log(user);
+          
           navigation.navigate("Home");
       }catch(err){
           console.log(err);
@@ -45,7 +40,12 @@ const UserProfile = () => {
     <SafeAreaView>
       <Text>User profile Page</Text>
       {isLogedIn ? 
-      <><Text>{user}</Text><Button onPress={() => logout()} title="Disconnect" /></>
+      <>
+      <Text>User {user}</Text>
+      <Text>Email: {profile.email}</Text>
+      <Text>Fullname: {profile.fullname}</Text>
+      <Button onPress={() => logout()} title="Disconnect" />
+      </>
       :
       <Button onPress={()=> navigation.navigate("Login")} title="Login"/>
     }

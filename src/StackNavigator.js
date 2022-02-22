@@ -9,7 +9,6 @@ import Cart from './components/Cart/Cart';
 import Signin from './components/Signin/Signin';
 import UserProfile from './components/User/UserProfile';
 
-
 const Stack = createNativeStackNavigator();
 
 const StackNavigator = () => {
