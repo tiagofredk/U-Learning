@@ -71,7 +71,7 @@ const Login = () => {
         if (res.data) {
           setUserInfo({ email: '', password: '' });
           setIsLogedIn(true);
-          navigation.navigate("Home");
+          navigation.navigate("HomeStack");
         }
         
       } catch (error) {
@@ -106,7 +106,7 @@ const Login = () => {
         />
         <FormSubmitButton onPress={submitForm} title='Login' />
         
-        <Button onPress={() => navigation.navigate("Home")} title="Home" />
+        {/* <Button onPress={() => navigation.navigate("Home")} title="Home" /> */}
         <Button onPress={() => navigation.navigate("Signin")} title="Signin" />
 
       </SafeAreaView>
