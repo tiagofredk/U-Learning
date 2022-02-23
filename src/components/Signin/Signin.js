@@ -69,16 +69,17 @@ const SignupForm = ({ navigation }) => {
     if (isValidForm()) {
       // submit form
       console.log(userInfo);
+
     }
   };
 
-  const signUp = async (values, formikActions) => {
-    const res = await axios.post('/create-user', {
+  const signUp = async (values) => {
+    const res = await axios.post('https://ulearning-backend.vercel.app/adduser', {
       ...values,
     });
 
     if (res.data.success) {
-      const signInRes = await axios.post('/sign-in', {
+      const signInRes = await axios.post('https://ulearning-backend.vercel.app/adduser', {
         email: values.email,
         password: values.password,
       });
@@ -91,8 +92,6 @@ const SignupForm = ({ navigation }) => {
       }
     }
 
-    formikActions.resetForm();
-    formikActions.setSubmitting(false);
   };
 
   return (
