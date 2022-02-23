@@ -49,7 +49,6 @@ const UserProfile = () => {
       :
       <Button onPress={()=> navigation.navigate("Login")} title="Login"/>
     }
-        <Button onPress={()=> navigation.navigate("Home")} title="Home"/>
     </SafeAreaView>
   )
 }

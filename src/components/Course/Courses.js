@@ -8,7 +8,7 @@ const Courses = () => {
   return (
     <SafeAreaView>
         <Text>Courses</Text>
-        <Button onPress={()=> navigation.navigate("Home") } title="Home"/>
+        
     </SafeAreaView>
     
   )

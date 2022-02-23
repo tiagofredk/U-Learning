@@ -9,7 +9,7 @@ import FormSubmitButton from './FormSubmitButton'
 import FormHeader from './FormHeader'
 import { isValidEmail, isValidObjField, updateError } from '../utils/methods';
 import axios from 'axios'
-console.log();
+
 
 const Login = () => {
   const navigation = useNavigation();
@@ -82,6 +82,7 @@ const Login = () => {
 
   return (
     <FormContainer>
+      {/* <StackNavigator/> */}
       <SafeAreaView>
         <FormHeader
           leftHeading='Login'
@@ -104,9 +105,10 @@ const Login = () => {
           secureTextEntry
         />
         <FormSubmitButton onPress={submitForm} title='Login' />
-
+        
         <Button onPress={() => navigation.navigate("Home")} title="Home" />
         <Button onPress={() => navigation.navigate("Signin")} title="Signin" />
+
       </SafeAreaView>
     </FormContainer>
   )

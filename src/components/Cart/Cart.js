@@ -8,7 +8,7 @@ const Cart = () => {
   return (
     <SafeAreaView>
         <Text>Cart</Text>
-        <Button onPress={()=> navigation.navigate("Home") } title="Home"/>
+        
     </SafeAreaView>
     
   )
