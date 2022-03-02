@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import { CartContext } from '../CarContext';
+import { CartContext } from './CartContext';
 
 
 
