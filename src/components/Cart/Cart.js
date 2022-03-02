@@ -5,7 +5,7 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 import { useNavigation } from '@react-navigation/native'
 import { render } from 'react-dom'
 
-export function Cart({navigation}){
+export default function Cart({navigation}){
   const {items, getItemsCount, getTotalPrice} = useContext(CartContext)
 
   function Totals(){

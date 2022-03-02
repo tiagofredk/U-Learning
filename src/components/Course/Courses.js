@@ -7,6 +7,8 @@ import { CartProvider } from '../Cart/components/CartContext';
 import { ProductsList } from './screens/ProductsList';
 import { ProductDetails } from './screens/ProductDetails';
 import { CartIcon } from '../Cart/components/CartIcon';
+import Cart from  '../Cart/Cart';
+
 
 
 
@@ -18,7 +20,7 @@ const Stack = createNativeStackNavigator();
 function Courses(){
   return(
     <CartProvider>
-      <NavigationContainer>
+      
         <Stack.Navigator>
           <Stack.Screen name='Products' component={ProductsList}
           options={({navigation})=>({
@@ -40,7 +42,7 @@ function Courses(){
           })}
             />
         </Stack.Navigator>
-      </NavigationContainer>
+      
     </CartProvider>
   )
 }

@@ -10,6 +10,7 @@ import { AntDesign } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
 import StackNavigator from './StackNavigator';
 
+
 const Tabnavigator = () => {
   
     const Tab = createBottomTabNavigator();
