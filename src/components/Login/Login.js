@@ -10,7 +10,6 @@ import FormHeader from './FormHeader'
 import { isValidEmail, isValidObjField, updateError } from '../utils/methods';
 import axios from 'axios'
 
-
 const Login = () => {
   const navigation = useNavigation();
 

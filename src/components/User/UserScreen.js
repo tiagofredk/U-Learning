@@ -12,6 +12,8 @@ import { View, Dimensions, StyleSheet } from "react-native";
 import { useState } from "react";
 import Logo from "../../../assets/logo.png";
 import BackgroundImage from "../../../assets/background_image.png";
+// import { MainContext } from "../../context/MainContext";
+// const { user, isLogedIn , setIsLogedIn, profile } = useContext(MainContext);
 
 const windowHeight = Dimensions.get("window").height;
 

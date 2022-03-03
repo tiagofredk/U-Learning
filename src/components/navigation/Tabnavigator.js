@@ -9,7 +9,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
 import StackNavigator from './StackNavigator';
-
+import UserScreen from '../User/UserScreen';
 
 const Tabnavigator = () => {
   
@@ -36,7 +36,7 @@ const Tabnavigator = () => {
                 <AntDesign name="shoppingcart" size={size} color={color} />
             )
         }}/>
-        <Tab.Screen name="UserProfile" component={UserProfile} options={{
+        <Tab.Screen name="UserProfile" component={UserScreen} options={{
             tabBarIcon: ({color, size}) => (
                 <AntDesign name="user" size={size} color={color} />
             )
