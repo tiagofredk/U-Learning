@@ -3,19 +3,11 @@ import {View, Text, FlatList, StyleSheet} from 'react-native';
 import { Product } from "../components/Product";
 import { getProducts } from "./ProductsService";
 
-
-
-
-
 export function ProductsList ({navigation}) {
 function renderProduct({item: product}) {
     return (
       <Product {...product} 
-      onPress={() => {
-        navigation.navigate('ProductDetails', {
-          productId: product.id,
-        });
-      }}
+      onPress={() => navigation.navigate('ProductDetails', { productId: product.id })}
       />
     );
   }
@@ -47,5 +39,8 @@ const styles = StyleSheet.create({
         backgroundColor: '#FF5A33',
         paddingVertical: 8,
         marginHorizontal: 8,
+    },
+    prod:{
+      marginHorizontal: 1,
     }
 })

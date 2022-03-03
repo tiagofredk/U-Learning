@@ -1,11 +1,11 @@
 import React, { useContext } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import { CartContext } from './CartContext';
-
-
+import { MainContext } from '../../../context/MainContext';
+// import { CartContext } from './CartContext';
 
 export function CartIcon({navigation}) {
-  const {getItemsCount} = useContext(CartContext);
+  // const {getItemsCount} = useContext(CartContext);
+  const {items, setItems, getItemsCount, addItemToCart, getTotalPrice} = useContext(MainContext)
   return (
     <View style={styles.container}>
       <Text style={styles.text} 
@@ -16,6 +16,7 @@ export function CartIcon({navigation}) {
     </View>
   );
 }
+
 const styles = StyleSheet.create({
   container: {
     marginHorizontal: 8,

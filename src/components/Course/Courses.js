@@ -1,26 +1,20 @@
 import { Button, StyleSheet, Text, View } from 'react-native'
-import React from 'react'
-import { useNavigation, NavigationContainer } from '@react-navigation/native'
+import React, { useContext } from 'react'
+// import { useNavigation, NavigationContainer } from '@react-navigation/native'
 import {createNativeStackNavigator} from '@react-navigation/native-stack'
-import { SafeAreaView } from 'react-native-safe-area-context';
-import { CartProvider } from '../Cart/components/CartContext';
+// import { SafeAreaView } from 'react-native-safe-area-context';
+// import { CartProvider } from '../Cart/components/CartContext';
 import { ProductsList } from './screens/ProductsList';
 import { ProductDetails } from './screens/ProductDetails';
 import { CartIcon } from '../Cart/components/CartIcon';
-import Cart from  '../Cart/Cart';
-
-
-
-
-
-
+import Cart from '../Cart/Cart';
+import { MainContext } from '../../context/MainContext';
 
 const Stack = createNativeStackNavigator();
 
 function Courses(){
+  const {items, setItems, getItemsCount, addItemToCart, getTotalPrice} = useContext(MainContext)
   return(
-    <CartProvider>
-      
         <Stack.Navigator>
           <Stack.Screen name='Products' component={ProductsList}
           options={({navigation})=>({
@@ -41,9 +35,7 @@ function Courses(){
             headerRight: ()=> <CartIcon navigation={navigation}/>,
           })}
             />
-        </Stack.Navigator>
-      
-    </CartProvider>
+        </Stack.Navigator>  
   )
 }
 

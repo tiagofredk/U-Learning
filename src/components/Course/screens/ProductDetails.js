@@ -6,6 +6,7 @@ import { CartContext } from "../../Cart/components/CartContext";
 
 
 export function ProductDetails({route}){
+    // const {items, setItems, getItemsCount, addItemToCart, getTotalPrice} = useContext(MainContext)
     const {productId} = route.params;
     const [product, setProduct] = useState({});
 
