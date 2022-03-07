@@ -39,6 +39,10 @@ const Login = () => {
     return true;
   };
 
+  if(error != ""){
+    alert(error)
+  }
+
   const submitForm = async () => {
 
     if (isValidForm()) {
@@ -58,19 +62,23 @@ const Login = () => {
           config
         )
         
-        // let userProfile={}
-        let fullname = res.data.fullname;
-        setUser(res.data.username)
-                
-        let userProfile={fullname, email}
-        
-        setProfile(userProfile);
-        
+        console.log(res.data.message)
+        if (res.data.message === "Incorrect email"){
+          alert("incorrect email")
+        }else if(res.data.message === "Incorrect password"){
+          alert("Incorrect password")
+        }else{
 
-        if (res.data) {
-          setUserInfo({ email: '', password: '' });
-          setIsLogedIn(true);
-          navigation.navigate("HomeStack");
+          let fullname = res.data.fullname;
+          setUser(res.data.username)
+                  
+          let userProfile={fullname, email}
+          
+          setProfile(userProfile);
+          
+            setUserInfo({ email: '', password: '' });
+            setIsLogedIn(true);
+            navigation.navigate("HomeStack");
         }
         
       } catch (error) {
