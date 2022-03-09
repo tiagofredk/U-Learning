@@ -55,4 +55,8 @@ const UserProfile = () => {
 
 export default UserProfile
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+  container:{
+    backgroundColor: '#FF5A33',
+  }
+})
