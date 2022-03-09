@@ -24,7 +24,7 @@ function Courses(){
         <Stack.Navigator>
           <Stack.Screen name='Products' component={ProductsList}
           options={({navigation})=>({
-            title: 'Products',
+            title: 'Products', 
             headerTitleStyle: styles.headerTitle,
             headerRight: () => <CartIcon navigation={navigation}/>
           })} />

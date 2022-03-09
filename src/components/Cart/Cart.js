@@ -6,7 +6,7 @@ import { useNavigation } from '@react-navigation/native'
 import { render } from 'react-dom'
 
 export default function Cart({navigation}){
-  const {items, getItemsCount, getTotalPrice} = useContext(CartContext)
+  const {items, getItemsCount,getTotalPrice} = useContext(CartContext)
 
   function Totals(){
     let [total, setTotal] = useState(0);
@@ -41,6 +41,9 @@ export default function Cart({navigation}){
         ListFooterComponent={Totals}
       />
     )
+    
+
+    
 }
 
 const styles = StyleSheet.create({

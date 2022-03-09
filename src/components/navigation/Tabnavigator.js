@@ -1,9 +1,9 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View, Image } from 'react-native'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import React from 'react'
 import MainPage from '../Home/MainPage';
 import Courses from '../Course/Courses';
-import Cart from '../Cart/Cart';
+import Cart from '../Cart/Cart'
 import UserProfile from "../User/UserProfile"
 import { Ionicons } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
@@ -23,22 +23,23 @@ const Tabnavigator = () => {
       }}>
         <Tab.Screen name="Home" component={StackNavigator.HomeStack} options={{
             tabBarIcon: ({color, size}) => (
-                <Ionicons name="ios-home-outline" size={size} color={color} />
-            )
+               <Ionicons name="ios-home-outline" size={size} color={'#FF5A33'} />
+                )
         }} />
         <Tab.Screen name="Courses" component={Courses} options={{
             tabBarIcon: ({color, size}) => (
-                <MaterialIcons name="storefront" size={size} color={color} />
+                <MaterialIcons name="storefront" size={size} color={'#FF5A33'} />
             )
         }}/>
+        {/*
         <Tab.Screen name="Cart" component={Cart} options={{
             tabBarIcon: ({color, size}) => (
                 <AntDesign name="shoppingcart" size={size} color={color} />
             )
-        }}/>
+        }}/> */}
         <Tab.Screen name="UserProfile" component={UserProfile} options={{
             tabBarIcon: ({color, size}) => (
-                <AntDesign name="user" size={size} color={color} />
+                <AntDesign name="user" size={size} color={'#FF5A33'} />
             )
         }}/>
       </Tab.Navigator>
