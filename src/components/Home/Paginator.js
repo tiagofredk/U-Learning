@@ -9,15 +9,15 @@ const Paginator = ({data, scrollX}) => {
     <View style={styles.container}>
       {data.map((_, i) => {
 
-        // const inputRange = [(i-1) * width, i * width, (i + 1) * width];
+        const inputRange = [(i-1) * width, i * width, (i + 1) * width];
 
-        // const dotWidht = interpolate(
-        //   translateX.value,
-        //   inputRange,
-        //   [10, 20, 10]
-        // )
+        const dotWidht = scrollX.interpolate({
+          inputRange,
+          outputRange: [10, 20, 10],
+          extrapolate: "clamp"
+        })
 
-        return <Animated.View style={[styles.dot, {width:10}]} key={i.toString()} />;
+        return <Animated.View style={[styles.dot, {width:dotWidht}]} key={i.toString()} />;
       })}
     </View>
   )
