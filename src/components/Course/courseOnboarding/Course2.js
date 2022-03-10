@@ -1,15 +1,14 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
-import { ProductsList } from './screens/ProductsList'
 
-const Courses = () => {
+const Course2 = () => {
   return (
     <View>
-      <ProductsList/>
+      <Text>Course2</Text>
     </View>
   )
 }
 
-export default Courses
+export default Course2
 
 const styles = StyleSheet.create({})

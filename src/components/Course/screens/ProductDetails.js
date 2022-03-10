@@ -1,9 +1,7 @@
 import React, {useEffect, useState, useContext} from "react";
 import {Text, Image, View, ScrollView, SafeAreaView, Button, StyleSheet} from 'react-native'
 import { getProduct } from "./ProductsService";
-import { CartContext } from "../../Cart/components/CartContext";
-
-
+// import { CartContext } from "../../Cart/components/CartContext";
 
 export function ProductDetails({route}){
     // const {items, setItems, getItemsCount, addItemToCart, getTotalPrice} = useContext(MainContext)
@@ -17,7 +15,7 @@ export function ProductDetails({route}){
     });
 
     function onAddToCart(){
-        addItemToCart(product.id);;
+        addItemToCart(product.id);
     }
 
     return(
@@ -30,7 +28,7 @@ export function ProductDetails({route}){
 
                 <View style={styles.infoContainer}>
                     <Text style={styles.name}>{product.name}</Text>
-                    <Text style={styles.price}>${product.price}</Text>
+                    {/* <Text style={styles.price}>${product.price}</Text> */}
                     <Text style={styles.description}>{product.description}</Text>
                     <Button 
                     onPress={onAddToCart}
