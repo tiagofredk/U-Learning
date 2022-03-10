@@ -25,7 +25,7 @@ const Tabnavigator = () => {
                <Ionicons name="ios-home-outline" size={size} color={'#646464'} />
                 )
         }} />
-        <Tab.Screen name="Courses" component={Courses} options={{
+        <Tab.Screen name="Courses" component={StackNavigator.CoursesStack} options={{
             tabBarIcon: ({color, size}) => (
                 <MaterialIcons name="storefront" size={size} color={'#646464'} />
             )
