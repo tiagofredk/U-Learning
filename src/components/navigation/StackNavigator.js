@@ -5,6 +5,7 @@ import MainPage from '../Home/MainPage';
 import Login from '../Login/Login';
 // import Impressum from '../Impressum/Impressum';
 import Signin from '../Signin/Signin';
+// import OnboardingScreen from '../Home/OnboardingScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -12,6 +13,7 @@ const HomeStack = () => {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       
+      {/* <Stack.Screen name="Onboarding" component={OnboardingScreen} /> */}
       <Stack.Screen name="HomeStack" component={MainPage} />
       <Stack.Screen name="Login" component={Login} />
       <Stack.Screen name="Signin" component={Signin}/>
