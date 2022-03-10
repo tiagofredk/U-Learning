@@ -2,11 +2,11 @@ import { Button, StyleSheet, Text, TextInput, View } from 'react-native'
 import React, { useContext, useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { useNavigation } from '@react-navigation/native'
+import FormSubmitButton from './FormSubmitButton'
 import FormContainer from './FormContainer'
+import FormHeader from './FormHeader'
 import FormInput from './FormInput'
 import { MainContext } from '../../context/MainContext'
-import FormSubmitButton from './FormSubmitButton'
-import FormHeader from './FormHeader'
 import { isValidEmail, isValidObjField, updateError } from '../utils/methods';
 import axios from 'axios'
 
@@ -92,9 +92,9 @@ const Login = () => {
       {/* <StackNavigator/> */}
       <SafeAreaView>
         <FormHeader
-          leftHeading='Login'
+          leftHeading='Log In'
           rightHeading='Back'
-          subHeading='Enter with your e-mail and password'
+          subHeading='By using our services you are agreeing to our Terms and Privacy Statament'
         />
         <FormInput
           value={email}
@@ -114,9 +114,10 @@ const Login = () => {
         <FormSubmitButton onPress={submitForm} title='Login' />
         
         {/* <Button onPress={() => navigation.navigate("Home")} title="Home" /> */}
-        <Button onPress={() => navigation.navigate("Signin")} title="Signin" />
+        {/* <Button onPress={() => navigation.navigate("Signin")} title="Signin" /> */}
 
       </SafeAreaView>
+      <Text style={styles.text} onPress={() => navigation.navigate("Signin")}>New Here? Create an account</Text>
     </FormContainer>
   )
 }
@@ -130,4 +131,12 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     padding: 10,
   },
+  text:{
+    // flex: 1,
+    // justifyContent: "center"
+    marginTop:100,
+    textAlign: "center",
+    color:"#493d8a",
+
+  }
 })
