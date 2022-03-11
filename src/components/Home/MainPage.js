@@ -6,7 +6,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
 // import ULearning from '../../../assets/src/Mockspics/ULearning.png'
 import Onboarding from './Onboarding';
-import { backgroundColor } from 'react-native/Libraries/Components/View/ReactNativeStyleAttributes';
+// import { backgroundColor } from 'react-native/Libraries/Components/View/ReactNativeStyleAttributes';
 // import Weather from '../Weather/Weather';
 
 export default function MainPage() {
@@ -30,7 +30,6 @@ export default function MainPage() {
         <Image source={ULearning} style={{width: 300, height:300, paddingBottom:  8}} />
       </Text> */}
 
-      {/* <Weather />  */}
       <Onboarding />
 
     </SafeAreaView>
