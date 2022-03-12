@@ -1,4 +1,4 @@
-import { Button, StyleSheet, Text, TextInput, View } from 'react-native'
+import { StyleSheet, Text, View } from 'react-native'
 import React, { useContext, useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { useNavigation } from '@react-navigation/native'
@@ -12,7 +12,7 @@ import axios from 'axios'
 
 const Login = () => {
   const navigation = useNavigation();
-
+  
   const { setUser, isLogedIn, setIsLogedIn, profile, setProfile } = useContext(MainContext);
   const [userInfo, setUserInfo] = useState({
     email: '',
@@ -35,7 +35,6 @@ const Login = () => {
 
     if (!password.trim() || password.length < 7)
       return updateError('Password is too short!', setError);
-
     return true;
   };
 
@@ -89,7 +88,6 @@ const Login = () => {
 
   return (
     <FormContainer>
-      {/* <StackNavigator/> */}
       <SafeAreaView>
         <FormHeader
           leftHeading='Log In'
@@ -113,11 +111,11 @@ const Login = () => {
         />
         <FormSubmitButton onPress={submitForm} title='Login' />
 
-        {/* <Button onPress={() => navigation.navigate("Home")} title="Home" /> */}
-        {/* <Button onPress={() => navigation.navigate("Signin")} title="Signin" /> */}
-
       </SafeAreaView>
-      <Text style={styles.text} onPress={() => navigation.navigate("Signin")}>New Here? Create an account</Text>
+      <View style={styles.sigin} >
+        <Text style={styles.text1} >New Here?</Text>
+        <Text style={styles.text} onPress={() => navigation.navigate("Signin")}> Create an account</Text>
+      </View>
     </FormContainer>
   )
 }
@@ -132,11 +130,18 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   text: {
-    // flex: 1,
-    // justifyContent: "center"
-    marginTop: 100,
     textAlign: "center",
     color: "#493d8a",
-
+    fontWeight: "bold"
+  },
+  text1: {
+    textAlign: "center",
+  },
+  sigin: {
+    flex: 1,
+    flexDirection: "row",
+    justifyContent: "center",
+    marginTop: 100,
+    textAlign: "center",
   }
 })

@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
-import { View, StyleSheet, Text } from 'react-native';
+import { StyleSheet } from 'react-native';
 
-import { isValidEmail, isValidObjField, updateError } from '../utils/methods';
-
-import { StackActions, useNavigation } from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 
 import { Formik } from 'formik';
 import * as Yup from 'yup';
@@ -13,7 +11,6 @@ import FormInput from '../Login/FormInput';
 import FormSubmitButton from '../Login/FormSubmitButton';
 import axios from 'axios';
 import FormHeader from '../Login/FormHeader';
-
 
 const validationSchema = Yup.object({
   fullname: Yup.string()
@@ -31,7 +28,6 @@ const validationSchema = Yup.object({
       ),
     });
     
-    
     const SignupForm = () => {
       const navigation = useNavigation();
       const userInfo = {
@@ -44,39 +40,7 @@ const validationSchema = Yup.object({
       const [error, setError] = useState('');
       
       const { fullname, email, password, confirmPassword } = userInfo;
-      
-      
-      // const handleChangeText = (value, fieldName) => {
-        //   setUserInfo({ ...userInfo, [fieldName]: value });
-        // };
-        
-        // const isValidForm = () => {
-          //   // we will accept only if all of the fields have value
-  //   if (!isValidObjField(userInfo))
-  //     return updateError('Required all fields!', setError);
-  //   // if valid name with 3 or more characters
-  //   if (!fullname.trim() || fullname.length < 3)
-  //     return updateError('Invalid name!', setError);
-  //   // only valid email id is allowed
-  //   if (!isValidEmail(email)) return updateError('Invalid email!', setError);
-  //   // password must have 8 or more characters
-  //   if (!password.trim() || password.length < 8)
-  //     return updateError('Password is less then 8 characters!', setError);
-  //   // password and confirm password must be the same
-  //   if (password !== confirmPassword)
-  //     return updateError('Password does not match!', setError);
-  
-  //   return true;
-  // };
-  
-  // const sumbitForm = () => {
-    //   if (isValidForm()) {
-      //     // submit form
-      //     console.log(userInfo);
-      //   }
-      // };
-      
-      
+
       const signUp = async (values, formikActions) => {
         const res = await axios.post('https://ulearning-backend.vercel.app/adduser', {
           ...values,
@@ -86,19 +50,6 @@ const validationSchema = Yup.object({
       alert("Success, you sign up. please login")
       navigation.navigate("Login")
     }
-    // if (res.data.success) {
-      //   const signInRes = await axios.post('/sign-in', {
-        //     email: values.email,
-        //     password: values.password,
-        //   });
-        //   if (signInRes.data.success) {
-          //     navigation.dispatch(
-            //       StackActions.replace('ImageUpload', {
-              //         token: signInRes.data.token,
-    //       })
-    //     );
-    //   }
-    // }
 
     formikActions.resetForm();
     formikActions.setSubmitting(false);
@@ -107,9 +58,9 @@ const validationSchema = Yup.object({
   return (
     <FormContainer>
       <FormHeader
-      leftHeading='Sign-up'
+      leftHeading='Create an Account'
       rightHeading='Back'
-      subHeading='Please fill in your data'
+      subHeading='By using our services you are agreeing to our Terms and Privacy Statament'
       />
       <Formik
         initialValues={userInfo}
@@ -178,6 +129,8 @@ const validationSchema = Yup.object({
   );
 };
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  
+});
 
 export default SignupForm;
