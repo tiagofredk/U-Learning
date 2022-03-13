@@ -12,12 +12,12 @@ import LoginDecision from '../Login/LoginDecision';
 
 const Stack = createNativeStackNavigator();
 
-const HomeStack = () => {
+export const HomeStack = () => {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       
       <Stack.Screen name="HomeStack" component={MainPage} />
-      {/* <Stack.Screen name="LoginDecision" component={LoginDecision} /> */}
+      <Stack.Screen name="LoginDecision" component={LoginDecision} />
       <Stack.Screen name="Login" component={Login} />
       <Stack.Screen name="Signin" component={Signin}/>
       {/* <Stack.Screen name="Impressum" component={Impressum}/> */}
@@ -26,7 +26,7 @@ const HomeStack = () => {
   )
 }
 
-const CoursesStack = () => {
+export const CoursesStack = () => {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen name="CoursesStack" component={Courses}/>
@@ -35,9 +35,9 @@ const CoursesStack = () => {
   )
 }
 
-module.exports = {
-  HomeStack,
-  CoursesStack
-}
+// module.exports = {
+//   HomeStack,
+//   CoursesStack
+// }
 
 const styles = StyleSheet.create({})

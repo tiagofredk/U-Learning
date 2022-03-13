@@ -11,7 +11,8 @@ import {
   PlayfairDisplay_600SemiBold,
 } from '@expo-google-fonts/playfair-display';
 import AppLoading from 'expo-app-loading';
-import Onboarding from './Onboarding';
+import Tabnavigator from '../navigation/Tabnavigator';
+// import Onboarding from './Onboarding';
 
 export default function MainPage() {
   const { user, setUser, isLogedIn } = useContext(MainContext)
@@ -39,7 +40,9 @@ export default function MainPage() {
           }
         </View>
         
-        <Onboarding />
+        {/* <Onboarding /> */}
+
+        <Tabnavigator/>
 
       </SafeAreaView>
     )

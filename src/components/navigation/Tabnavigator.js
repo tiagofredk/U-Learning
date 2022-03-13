@@ -1,14 +1,14 @@
 import { StyleSheet, Text, View, Image } from 'react-native'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import React from 'react'
-// import MainPage from '../Home/MainPage';
+import MainPage from '../Home/MainPage';
 import Courses from '../Course/Courses';
 // import Cart from '../Cart/Cart'
 import UserProfile from "../User/UserProfile"
 import { Ionicons } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
-import StackNavigator from './StackNavigator';
+import {HomeStack, CoursesStack} from './StackNavigator';
 
 const Tabnavigator = () => {
   
@@ -19,12 +19,12 @@ const Tabnavigator = () => {
         headerShown: false,
         tabBarShowLabel:true
       }}>
-        <Tab.Screen name="Home" component={StackNavigator.HomeStack} options={{
+        <Tab.Screen name="Home" component={HomeStack} options={{
             tabBarIcon: ({color, size}) => (
                <Ionicons name="ios-home-outline" size={size} color={'#646464'} />
                 )
         }} />
-        <Tab.Screen name="Courses" component={StackNavigator.CoursesStack} options={{
+        <Tab.Screen name="Courses" component={CoursesStack} options={{
             tabBarIcon: ({color, size}) => (
                 <MaterialIcons name="storefront" size={size} color={'#646464'} />
             )

@@ -39,7 +39,7 @@ export default function MainOnboard() {
               <Text style={styles.text}>Hello {user}</Text>
             </>
             :
-            <Text style={styles.text} onPress={() => navigation.navigate("LoginDecision")} title="Login">
+            <Text style={styles.text} onPress={() => navigation.navigate("Home1")} title="Login">
               Sign In
             </Text>
           }
