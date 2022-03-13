@@ -28,15 +28,16 @@ export default Paginator
 const styles = StyleSheet.create({
     container:{
         // flex:1,
+        backgroundColor: "#ADD8E6",
         justifyContent:"center",
         // alignItems:"center",
         flexDirection: "row", 
-        height:64
+        height:74
     },
     dot: {
       height: 10,
       borderRadius: 5,
-      backgroundColor: "#493d8a",
+      backgroundColor: "#ffffff",
       marginHorizontal: 8,
     }
 })
