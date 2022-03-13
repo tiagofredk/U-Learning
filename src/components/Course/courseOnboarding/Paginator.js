@@ -27,6 +27,7 @@ export default Paginator
 
 const styles = StyleSheet.create({
     container:{
+      backgroundColor: "#ADD8E6",
         // flex:1,
         justifyContent:"center",
         // alignItems:"center",
@@ -36,7 +37,7 @@ const styles = StyleSheet.create({
     dot: {
       height: 10,
       borderRadius: 5,
-      backgroundColor: "#493d8a",
+      backgroundColor: "#ffffff",
       marginHorizontal: 8,
     }
 })
