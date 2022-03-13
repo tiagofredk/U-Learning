@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react'
-import { StyleSheet, Text, View, Button, Image } from 'react-native';
+import React from 'react'
+import { StyleSheet, Text, View } from 'react-native';
 import { useContext } from 'react';
 import { MainContext } from '../../context/MainContext';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -10,16 +10,22 @@ import {
   PlayfairDisplay_500Medium,
   PlayfairDisplay_600SemiBold,
 } from '@expo-google-fonts/playfair-display';
+
 import AppLoading from 'expo-app-loading';
+
 import Onboarding from './Onboarding';
 
-export default function MainPage() {
+export default function MainOnboard() {
+
   const { user, setUser, isLogedIn } = useContext(MainContext)
+
   const navigation = useNavigation();
+  
   let [fontsLoaded] = useFonts({
     PlayfairDisplay_400Regular,
     PlayfairDisplay_500Medium,
     PlayfairDisplay_600SemiBold,
+
   });
 
   if (!fontsLoaded) {

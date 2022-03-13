@@ -18,7 +18,6 @@ const Tabnavigator = () => {
     <Tab.Navigator screenOptions={{ 
         headerShown: false,
         tabBarShowLabel:true
-        
       }}>
         <Tab.Screen name="Home" component={StackNavigator.HomeStack} options={{
             tabBarIcon: ({color, size}) => (

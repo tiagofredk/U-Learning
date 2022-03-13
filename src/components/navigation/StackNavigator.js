@@ -17,7 +17,7 @@ const HomeStack = () => {
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       
       <Stack.Screen name="HomeStack" component={MainPage} />
-      <Stack.Screen name="LoginDecision" component={LoginDecision} />
+      {/* <Stack.Screen name="LoginDecision" component={LoginDecision} /> */}
       <Stack.Screen name="Login" component={Login} />
       <Stack.Screen name="Signin" component={Signin}/>
       {/* <Stack.Screen name="Impressum" component={Impressum}/> */}
