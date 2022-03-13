@@ -13,7 +13,7 @@ import axios from 'axios'
 const Login = () => {
   const navigation = useNavigation();
 
-  const {setUser, isLogedIn, setIsLogedIn, profile, setProfile } = useContext(MainContext);
+  const { setUser, isLogedIn, setIsLogedIn, profile, setProfile } = useContext(MainContext);
   const [userInfo, setUserInfo] = useState({
     email: '',
     password: '',
@@ -22,7 +22,7 @@ const Login = () => {
   const [error, setError] = useState('');
 
   const { email, password } = userInfo;
-  
+
   const handleOnChangeText = (value, fieldName) => {
     setUserInfo({ ...userInfo, [fieldName]: value });
   };
@@ -39,14 +39,14 @@ const Login = () => {
     return true;
   };
 
-  if(error != ""){
+  if (error != "") {
     alert(error)
   }
 
   const submitForm = async () => {
 
     if (isValidForm()) {
-      
+
       try {
 
         let config = {
@@ -61,26 +61,26 @@ const Login = () => {
           userInfo,
           config
         )
-        
+
         console.log(res.data.message)
-        if (res.data.message === "Incorrect email"){
+        if (res.data.message === "Incorrect email") {
           alert("incorrect email")
-        }else if(res.data.message === "Incorrect password"){
+        } else if (res.data.message === "Incorrect password") {
           alert("Incorrect password")
-        }else{
+        } else {
 
           let fullname = res.data.fullname;
           setUser(res.data.username)
-                  
-          let userProfile={fullname, email}
-          
+
+          let userProfile = { fullname, email }
+
           setProfile(userProfile);
-          
-            setUserInfo({ email: '', password: '' });
-            setIsLogedIn(true);
-            navigation.navigate("HomeStack");
+
+          setUserInfo({ email: '', password: '' });
+          setIsLogedIn(true);
+          navigation.navigate("HomeStack");
         }
-        
+
       } catch (error) {
         console.log(error);
       }
@@ -112,7 +112,7 @@ const Login = () => {
           secureTextEntry
         />
         <FormSubmitButton onPress={submitForm} title='Login' />
-        
+
         {/* <Button onPress={() => navigation.navigate("Home")} title="Home" /> */}
         {/* <Button onPress={() => navigation.navigate("Signin")} title="Signin" /> */}
 
@@ -131,12 +131,12 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     padding: 10,
   },
-  text:{
+  text: {
     // flex: 1,
     // justifyContent: "center"
-    marginTop:100,
+    marginTop: 100,
     textAlign: "center",
-    color:"#493d8a",
+    color: "#493d8a",
 
   }
 })
