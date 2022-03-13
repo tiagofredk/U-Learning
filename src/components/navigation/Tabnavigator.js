@@ -35,7 +35,7 @@ const Tabnavigator = () => {
                 <AntDesign name="shoppingcart" size={size} color={color} />
             )
         }}/> */}
-        <Tab.Screen name="UserProfile" component={UserProfile} options={{
+        <Tab.Screen name="Account" component={UserProfile} options={{
             tabBarIcon: ({color, size}) => (
                 <AntDesign name="user" size={size} color={'#646464'} />
             )

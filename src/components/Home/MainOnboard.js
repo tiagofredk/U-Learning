@@ -39,7 +39,7 @@ export default function MainOnboard() {
             :
             <View style={styles.containerNav}>
               <Text style={styles.text} onPress={() => navigation.navigate("HomeStack")}>
-                Browse
+                Skip
               </Text>
               <Text style={styles.text} onPress={() => navigation.navigate("LoginDecision")}>
                 Sign In
@@ -69,6 +69,7 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 20,
     fontFamily: "PlayfairDisplay_600SemiBold",
+    color: "#646262"
   },
   linkbox: {
     width: 250,
