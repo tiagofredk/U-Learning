@@ -8,7 +8,7 @@ import UserProfile from "../User/UserProfile"
 import { Ionicons } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
-import {HomeStack, CoursesStack} from './StackNavigator';
+// import {HomeStack, CoursesStack} from './StackNavigator';
 
 const Tabnavigator = () => {
   
@@ -19,12 +19,12 @@ const Tabnavigator = () => {
         headerShown: false,
         tabBarShowLabel:true
       }}>
-        <Tab.Screen name="Home" component={HomeStack} options={{
+        <Tab.Screen name="Home" component={MainPage} options={{
             tabBarIcon: ({color, size}) => (
                <Ionicons name="ios-home-outline" size={size} color={'#646464'} />
                 )
         }} />
-        <Tab.Screen name="Courses" component={CoursesStack} options={{
+        <Tab.Screen name="Courses" component={Courses} options={{
             tabBarIcon: ({color, size}) => (
                 <MaterialIcons name="storefront" size={size} color={'#646464'} />
             )

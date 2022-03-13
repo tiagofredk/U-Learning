@@ -11,7 +11,7 @@ import {
   PlayfairDisplay_600SemiBold,
 } from '@expo-google-fonts/playfair-display';
 import AppLoading from 'expo-app-loading';
-import Tabnavigator from '../navigation/Tabnavigator';
+// import Tabnavigator from '../navigation/Tabnavigator';
 // import Onboarding from './Onboarding';
 
 export default function MainPage() {
@@ -42,7 +42,7 @@ export default function MainPage() {
         
         {/* <Onboarding /> */}
 
-        <Tabnavigator/>
+        {/* <Tabnavigator/> */}
 
       </SafeAreaView>
     )

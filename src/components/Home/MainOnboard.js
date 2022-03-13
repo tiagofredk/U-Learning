@@ -17,15 +17,14 @@ import Onboarding from './Onboarding';
 
 export default function MainOnboard() {
 
-  const { user, setUser, isLogedIn } = useContext(MainContext)
+  const { isLogedIn } = useContext(MainContext)
 
   const navigation = useNavigation();
-  
+
   let [fontsLoaded] = useFonts({
     PlayfairDisplay_400Regular,
     PlayfairDisplay_500Medium,
     PlayfairDisplay_600SemiBold,
-
   });
 
   if (!fontsLoaded) {
@@ -33,20 +32,21 @@ export default function MainOnboard() {
   } else {
     return (
       <SafeAreaView style={styles.container}>
+        <Onboarding />
         <View style={styles.linkbox} >
           {isLogedIn ?
-            <>
-              <Text style={styles.text}>Hello {user}</Text>
-            </>
+            navigation.navigate("Home")
             :
-            <Text style={styles.text} onPress={() => navigation.navigate("Home1")} title="Login">
-              Sign In
-            </Text>
+            <View style={styles.containerNav}>
+              <Text style={styles.text} onPress={() => navigation.navigate("HomeStack")}>
+                Browse
+              </Text>
+              <Text style={styles.text} onPress={() => navigation.navigate("LoginDecision")}>
+                Sign In
+              </Text>
+            </View>
           }
         </View>
-        
-        <Onboarding />
-
       </SafeAreaView>
     )
   }
@@ -59,6 +59,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  containerNav: {
+    width: "100%",
+    flexDirection:"row",
+    justifyContent:"space-around",
+    // backgroundColor:"#d6d6d6",
+    marginBottom: 20,
+  },
   text: {
     fontSize: 20,
     fontFamily: "PlayfairDisplay_600SemiBold",
@@ -67,5 +74,6 @@ const styles = StyleSheet.create({
     width: 250,
     marginTop: 50,
     alignItems: "flex-end",
-  }
+  },
+
 });
