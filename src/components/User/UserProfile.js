@@ -49,11 +49,14 @@ const UserProfile = () => {
       :
       <Button onPress={()=> navigation.navigate("Login")} title="Login"/>
     }
-        <Button onPress={()=> navigation.navigate("Home")} title="Home"/>
     </SafeAreaView>
   )
 }
 
 export default UserProfile
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+  container:{
+    backgroundColor: '#FF5A33',
+  }
+})

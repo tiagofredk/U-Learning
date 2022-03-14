@@ -2,19 +2,18 @@ import { Button, StyleSheet, Text, TextInput, View } from 'react-native'
 import React, { useContext, useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { useNavigation } from '@react-navigation/native'
+import FormSubmitButton from './FormSubmitButton'
 import FormContainer from './FormContainer'
+import FormHeader from './FormHeader'
 import FormInput from './FormInput'
 import { MainContext } from '../../context/MainContext'
-import FormSubmitButton from './FormSubmitButton'
-import FormHeader from './FormHeader'
 import { isValidEmail, isValidObjField, updateError } from '../utils/methods';
 import axios from 'axios'
-console.log();
 
 const Login = () => {
   const navigation = useNavigation();
 
-  const {setUser, isLogedIn, setIsLogedIn, profile, setProfile } = useContext(MainContext);
+  const { setUser, isLogedIn, setIsLogedIn, profile, setProfile } = useContext(MainContext);
   const [userInfo, setUserInfo] = useState({
     email: '',
     password: '',
@@ -23,7 +22,7 @@ const Login = () => {
   const [error, setError] = useState('');
 
   const { email, password } = userInfo;
-  
+
   const handleOnChangeText = (value, fieldName) => {
     setUserInfo({ ...userInfo, [fieldName]: value });
   };
@@ -40,10 +39,14 @@ const Login = () => {
     return true;
   };
 
+  if (error != "") {
+    alert(error)
+  }
+
   const submitForm = async () => {
 
     if (isValidForm()) {
-      
+
       try {
 
         let config = {
@@ -58,22 +61,26 @@ const Login = () => {
           userInfo,
           config
         )
-        
-        // let userProfile={}
-        let fullname = res.data.fullname;
-        setUser(res.data.username)
-                
-        let userProfile={fullname, email}
-        
-        setProfile(userProfile);
-        
 
-        if (res.data) {
+        console.log(res.data.message)
+        if (res.data.message === "Incorrect email") {
+          alert("incorrect email")
+        } else if (res.data.message === "Incorrect password") {
+          alert("Incorrect password")
+        } else {
+
+          let fullname = res.data.fullname;
+          setUser(res.data.username)
+
+          let userProfile = { fullname, email }
+
+          setProfile(userProfile);
+
           setUserInfo({ email: '', password: '' });
           setIsLogedIn(true);
-          navigation.navigate("Home");
+          navigation.navigate("HomeStack");
         }
-        
+
       } catch (error) {
         console.log(error);
       }
@@ -82,11 +89,12 @@ const Login = () => {
 
   return (
     <FormContainer>
+      {/* <StackNavigator/> */}
       <SafeAreaView>
         <FormHeader
-          leftHeading='Login'
+          leftHeading='Log In'
           rightHeading='Back'
-          subHeading='Enter with your e-mail and password'
+          subHeading='By using our services you are agreeing to our Terms and Privacy Statament'
         />
         <FormInput
           value={email}
@@ -105,9 +113,11 @@ const Login = () => {
         />
         <FormSubmitButton onPress={submitForm} title='Login' />
 
-        <Button onPress={() => navigation.navigate("Home")} title="Home" />
-        <Button onPress={() => navigation.navigate("Signin")} title="Signin" />
+        {/* <Button onPress={() => navigation.navigate("Home")} title="Home" /> */}
+        {/* <Button onPress={() => navigation.navigate("Signin")} title="Signin" /> */}
+
       </SafeAreaView>
+      <Text style={styles.text} onPress={() => navigation.navigate("Signin")}>New Here? Create an account</Text>
     </FormContainer>
   )
 }
@@ -121,4 +131,12 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     padding: 10,
   },
+  text: {
+    // flex: 1,
+    // justifyContent: "center"
+    marginTop: 100,
+    textAlign: "center",
+    color: "#493d8a",
+
+  }
 })

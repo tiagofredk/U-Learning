@@ -1,10 +1,13 @@
 import React, { useEffect } from 'react'
-import { StyleSheet, Text, View, Button } from 'react-native';
+import { StyleSheet, Text, View, Button, Image } from 'react-native';
 import { useContext } from 'react';
 import { MainContext } from '../../context/MainContext';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
-
+// import ULearning from '../../../assets/src/Mockspics/ULearning.png'
+import Onboarding from './Onboarding';
+// import { backgroundColor } from 'react-native/Libraries/Components/View/ReactNativeStyleAttributes';
+// import Weather from '../Weather/Weather';
 
 export default function MainPage() {
   const { user, setUser, isLogedIn } = useContext(MainContext)
@@ -12,17 +15,23 @@ export default function MainPage() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Text >Main Page</Text>
+      <View style={styles.linkbox} >
+        {isLogedIn ?
+          <>
+            <Text>Hello {user}</Text>
+          </>
+          :
+          <Text style={styles.text} onPress={() => navigation.navigate("Login")} title="Login">
+            Login
+          </Text>
+        }
+      </View>
+      {/* <Text >
+        <Image source={ULearning} style={{width: 300, height:300, paddingBottom:  8}} />
+      </Text> */}
 
-      {isLogedIn ?
-        <><Text>{user}</Text>
-        <Button onPress={() => navigation.navigate("UserProfile")} title="User" /></>
-        :
-        <Button onPress={() => navigation.navigate("Login")} title="Login" />
-      }
-      <Button onPress={() => navigation.navigate("Impressum")} title="Impressum" />
-      <Button onPress={() => navigation.navigate("Courses")} title="Courses" />
-      <Button onPress={() => navigation.navigate("Cart")} title="Cart" />
+      <Onboarding />
+
     </SafeAreaView>
   )
 }
@@ -30,8 +39,22 @@ export default function MainPage() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#a97b7b',
+    backgroundColor: '#ffffff',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  text: {
+    // flex: 1,
+    fontWeight: "800",
+    fontSize: 18,
+
+  },
+  linkbox: {
+    width: 250,
+    // flex:1,
+    marginTop: 50,
+    // marginRight:60,
+    alignItems: "flex-end",
+    // backgroundColor:"green"
   }
 });
