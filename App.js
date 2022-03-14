@@ -24,7 +24,7 @@ export default function App() {
         {/* <Tabnavigator/> */}
         <Stack.Navigator screenOptions={{ headerShown: false }}>
           <Stack.Screen name="MainOnboard" component={MainOnboard} />
-          <Stack.Screen name="Home" component={Tabnavigator} />
+          <Stack.Screen name="HomeStack" component={Tabnavigator} />
           <Stack.Screen name="LoginDecision" component={LoginDecision} />
           <Stack.Screen name="Login" component={Login} />
           <Stack.Screen name="Signin" component={SignupForm} />
