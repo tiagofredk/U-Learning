@@ -41,7 +41,7 @@ export default function MainPage() {
         </View>
         
           <Module1 />
-          <Text style={styles.featured}>Featured</Text>
+          <Text style={styles.featured}>Our Courses</Text>
           <ListModule />
           <Text style={styles.news}>News</Text>
           {/* <ListModule /> */}
