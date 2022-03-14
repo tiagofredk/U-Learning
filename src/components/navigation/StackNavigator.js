@@ -7,15 +7,17 @@ import Login from '../Login/Login';
 import Signin from '../Signin/Signin';
 import Onboarding1 from '../Course/courseOnboarding/Onboarding1';
 import Courses from '../Course/Courses';
+import LoginDecision from '../Login/LoginDecision';
 // import OnboardingScreen from '../Home/OnboardingScreen';
 
 const Stack = createNativeStackNavigator();
 
-const HomeStack = () => {
+export const HomeStack = () => {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       
       <Stack.Screen name="HomeStack" component={MainPage} />
+      <Stack.Screen name="LoginDecision" component={LoginDecision} />
       <Stack.Screen name="Login" component={Login} />
       <Stack.Screen name="Signin" component={Signin}/>
       {/* <Stack.Screen name="Impressum" component={Impressum}/> */}
@@ -24,20 +26,18 @@ const HomeStack = () => {
   )
 }
 
-const CoursesStack = () => {
+export const CoursesStack = () => {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen name="CoursesStack" component={Courses}/>
       <Stack.Screen name="Onboarding1" component={Onboarding1}/>
-      {/* <Stack.Screen name="onboarding2" component={Onboarding2}/> */}
-      {/* <Stack.Screen name="onboarding3" component={Onboarding3}/> */}
     </Stack.Navigator>
   )
 }
 
-module.exports = {
-  HomeStack,
-  CoursesStack
-}
+// module.exports = {
+//   HomeStack,
+//   CoursesStack
+// }
 
 const styles = StyleSheet.create({})

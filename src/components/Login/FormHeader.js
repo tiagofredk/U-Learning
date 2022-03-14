@@ -1,5 +1,12 @@
 import React from 'react';
-import { View, StyleSheet, Text, Animated } from 'react-native';
+import { View, StyleSheet, Text } from 'react-native';
+import {
+  useFonts,
+  PlayfairDisplay_400Regular,
+  PlayfairDisplay_500Medium,
+  PlayfairDisplay_600SemiBold,
+} from '@expo-google-fonts/playfair-display';
+import AppLoading from 'expo-app-loading';
 
 const FormHeader = ({
   leftHeading,
@@ -9,32 +16,42 @@ const FormHeader = ({
   rightHeaderTranslateY = -20,
   rightHeaderOpacity = 0,
 }) => {
-  return (
-    <>
-      <View style={styles.container}>
-        <Animated.Text
-          style={[
-            styles.heading,
-            { transform: [{ translateX: leftHeaderTranslateX }] },
-          ]}
-        >
-          {leftHeading}
-        </Animated.Text>
-        <Animated.Text
-          style={[
-            styles.heading,
-            {
-              opacity: rightHeaderOpacity,
-              transform: [{ translateY: rightHeaderTranslateY }],
-            },
-          ]}
-        >
-          {rightHeading}
-        </Animated.Text>
-      </View>
-      <Text style={styles.subHeading}>{subHeading}</Text>
-    </>
-  );
+  let [fontsLoaded] = useFonts({
+    PlayfairDisplay_400Regular,
+    PlayfairDisplay_500Medium,
+    PlayfairDisplay_600SemiBold,
+  });
+
+  if (!fontsLoaded) {
+    return <AppLoading />
+  } else {
+    return (
+      <>
+        <View style={styles.container}>
+          <Text
+            style={[
+              styles.heading,
+              { transform: [{ translateX: leftHeaderTranslateX }] },
+            ]}
+          >
+            {leftHeading}
+          </Text>
+          <Text
+            style={[
+              styles.heading,
+              {
+                opacity: rightHeaderOpacity,
+                transform: [{ translateY: rightHeaderTranslateY }],
+              },
+            ]}
+          >
+            {rightHeading}
+          </Text>
+        </View>
+        <Text style={styles.subHeading}>{subHeading}</Text>
+      </>
+    );
+  }
 };
 
 const styles = StyleSheet.create({
@@ -44,14 +61,18 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   heading: {
-    fontSize: 30,
-    fontWeight: 'bold',
-    color: '#1b1b33'
+    fontSize: 23,
+    color: '#1b1b33',
+    fontFamily:"PlayfairDisplay_600SemiBold",
+    marginTop:20,
   },
   subHeading: {
-    fontSize: 18,
+    fontSize: 14,
     color: '#1b1b33',
-    textAlign: 'center'
+    textAlign: 'center',
+    fontFamily: "PlayfairDisplay_400Regular",
+    marginTop:22,
+    marginBottom: 32
   },
 });
 

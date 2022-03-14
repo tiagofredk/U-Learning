@@ -34,13 +34,11 @@ export const MainContextProvider = ({ children }) => {
         setUser(data.data.session.user.username)
         setProfile(userProfile);
 
-        console.log("context fetch response authentication: SUCCESS")
-        // console.log(data.data.session.user.email);
+        console.log("context fetch authentication response: SUCCESS")
           
       }else{
         setIsLogedIn(false);
-        console.log("context fetch response authentication: NOT AUTHENTICATED")
-        // console.log(data.data);
+        console.log("context fetch authentication response: NOT AUTHENTICATED")
       }
     }
     sincronize()

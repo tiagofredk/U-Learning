@@ -20,7 +20,13 @@ export default [
     {
         id: "4",
         title: "",
-        description: "In the SPA program you will learn React, the framework most used by programmers around the world.",
-        image: require("../img/Webdev9.png"),
+        description: "MongoDB is a source-available cross-platform document-oriented database program. Classified as a NoSQL database program, MongoDB uses JSON-like documents with optional schemas. MongoDB is developed by MongoDB Inc.",
+        image: require("../img/Webdev4.png"),
+    },
+    {
+        id: "5",
+        title: "",
+        description: "At the end of the course you will work in a group and create a web app from scratch using all the learning acquired with us at ULearning.",
+        image: require("../img/Webdev5.png"),
     },
 ]

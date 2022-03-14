@@ -10,13 +10,17 @@ import {
   PlayfairDisplay_500Medium,
   PlayfairDisplay_600SemiBold,
 } from '@expo-google-fonts/playfair-display';
-import AppLoading from 'expo-app-loading';
-import Module1 from './MainContent/Module1';
-import ListModule from './MainContent/ListModule';
 
-export default function MainPage() {
-  const { user, setUser, isLogedIn } = useContext(MainContext)
+import AppLoading from 'expo-app-loading';
+
+import Onboarding from './Onboarding';
+
+export default function MainOnboard() {
+
+  const { isLogedIn } = useContext(MainContext)
+
   const navigation = useNavigation();
+
   let [fontsLoaded] = useFonts({
     PlayfairDisplay_400Regular,
     PlayfairDisplay_500Medium,
@@ -28,24 +32,21 @@ export default function MainPage() {
   } else {
     return (
       <SafeAreaView style={styles.container}>
+        <Onboarding />
         <View style={styles.linkbox} >
           {isLogedIn ?
-            <>
-              <Text style={styles.text}>Hello {user}</Text>
-            </>
+            navigation.navigate("Home")
             :
-            <Text style={styles.text} onPress={() => navigation.navigate("LoginDecision")} title="Login">
-              Sign In
-            </Text>
+            <View style={styles.containerNav}>
+              <Text style={styles.text} onPress={() => navigation.navigate("Home")}>
+                Skip
+              </Text>
+              <Text style={styles.text} onPress={() => navigation.navigate("LoginDecision")}>
+                Sign In
+              </Text>
+            </View>
           }
         </View>
-        
-          <Module1 />
-          <Text style={styles.featured}>Our Courses</Text>
-          <ListModule />
-          <Text style={styles.news}>News</Text>
-          {/* <ListModule /> */}
-
       </SafeAreaView>
     )
   }
@@ -53,34 +54,27 @@ export default function MainPage() {
 
 const styles = StyleSheet.create({
   container: {
-    // flex: 1,
+    flex: 1,
     backgroundColor: '#ffffff',
-    // alignItems: 'center',
-    // justifyContent: 'center',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  containerNav: {
+    width: "100%",
+    flexDirection:"row",
+    justifyContent:"space-around",
+    // backgroundColor:"#d6d6d6",
+    marginBottom: 20,
   },
   text: {
-    fontSize: 18,
+    fontSize: 20,
     fontFamily: "PlayfairDisplay_600SemiBold",
-    // backgroundColor:"red",
-    // marginRight:0,
-    color: "#3b3b3b",
+    color: "#646262"
   },
   linkbox: {
-    // width: 250,
-    marginTop: 10,
-    marginRight: 10,
+    width: 250,
+    marginTop: 50,
     alignItems: "flex-end",
   },
-  featured: {
-    marginTop: 30,
-    marginLeft: 30,
-    fontSize:19,
-    fontWeight:"bold"
-  },
-  news:{
-    marginTop: 30,
-    marginLeft: 30,
-    fontSize:19,
-    fontWeight:"bold"
-  }
+
 });

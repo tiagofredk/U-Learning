@@ -1,21 +1,17 @@
 import React from 'react';
 import {
-  View,
   StyleSheet,
   Dimensions,
-  KeyboardAvoidingView,
-  Platform,
 } from 'react-native';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 const FormContainer = ({ children }) => {
   return (
-    <KeyboardAvoidingView
-      enabled
-      behavior={Platform.OS === 'android' ? 'padding' : null}
+    <KeyboardAwareScrollView
       style={styles.container}
     >
       {children}
-    </KeyboardAvoidingView>
+    </KeyboardAwareScrollView>
   );
 };
 

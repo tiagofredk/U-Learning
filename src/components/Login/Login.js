@@ -1,4 +1,4 @@
-import { Button, StyleSheet, Text, TextInput, View } from 'react-native'
+import { StyleSheet, Text, View } from 'react-native'
 import React, { useContext, useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { useNavigation } from '@react-navigation/native'
@@ -9,6 +9,7 @@ import FormInput from './FormInput'
 import { MainContext } from '../../context/MainContext'
 import { isValidEmail, isValidObjField, updateError } from '../utils/methods';
 import axios from 'axios'
+// import Tabnavigator from '../navigation/Tabnavigator'
 
 const Login = () => {
   const navigation = useNavigation();
@@ -35,7 +36,6 @@ const Login = () => {
 
     if (!password.trim() || password.length < 7)
       return updateError('Password is too short!', setError);
-
     return true;
   };
 
@@ -78,7 +78,7 @@ const Login = () => {
 
           setUserInfo({ email: '', password: '' });
           setIsLogedIn(true);
-          navigation.navigate("HomeStack");
+          navigation.navigate("Home");
         }
 
       } catch (error) {
@@ -88,37 +88,38 @@ const Login = () => {
   };
 
   return (
-    <FormContainer>
-      {/* <StackNavigator/> */}
-      <SafeAreaView>
-        <FormHeader
-          leftHeading='Log In'
-          rightHeading='Back'
-          subHeading='By using our services you are agreeing to our Terms and Privacy Statament'
-        />
-        <FormInput
-          value={email}
-          onChangeText={value => handleOnChangeText(value, 'email')}
-          label='Email'
-          placeholder='E-mail'
-          autoCapitalize='none'
-        />
-        <FormInput
-          value={password}
-          onChangeText={value => handleOnChangeText(value, 'password')}
-          label='Password'
-          placeholder='********'
-          autoCapitalize='none'
-          secureTextEntry
-        />
-        <FormSubmitButton onPress={submitForm} title='Login' />
+    <>
+      <FormContainer>
+        <SafeAreaView>
+          <FormHeader
+            leftHeading='Log In'
+            rightHeading='Back'
+            subHeading='By using our services you are agreeing to our Terms and Privacy Statament'
+          />
+          <FormInput
+            value={email}
+            onChangeText={value => handleOnChangeText(value, 'email')}
+            label='Email'
+            placeholder='E-mail'
+            autoCapitalize='none'
+          />
+          <FormInput
+            value={password}
+            onChangeText={value => handleOnChangeText(value, 'password')}
+            label='Password'
+            placeholder='********'
+            autoCapitalize='none'
+            secureTextEntry
+          />
+          <FormSubmitButton onPress={submitForm} title='Login' />
 
-        {/* <Button onPress={() => navigation.navigate("Home")} title="Home" /> */}
-        {/* <Button onPress={() => navigation.navigate("Signin")} title="Signin" /> */}
-
-      </SafeAreaView>
-      <Text style={styles.text} onPress={() => navigation.navigate("Signin")}>New Here? Create an account</Text>
-    </FormContainer>
+        </SafeAreaView>
+        <View style={styles.sigin} >
+          <Text style={styles.text1} >New Here?</Text>
+          <Text style={styles.text} onPress={() => navigation.navigate("Signin")}> Create an account</Text>
+        </View>
+      </FormContainer>
+    </>
   )
 }
 
@@ -132,11 +133,18 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   text: {
-    // flex: 1,
-    // justifyContent: "center"
-    marginTop: 100,
     textAlign: "center",
     color: "#493d8a",
-
+    fontWeight: "bold"
+  },
+  text1: {
+    textAlign: "center",
+  },
+  sigin: {
+    flex: 1,
+    flexDirection: "row",
+    justifyContent: "center",
+    marginTop: 100,
+    textAlign: "center",
   }
 })
