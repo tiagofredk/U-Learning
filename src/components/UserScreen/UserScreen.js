@@ -23,23 +23,37 @@ const UserScreen = () => {
         <Image source={Background} style={styles.background} alt="Background" />
 
         <View style={styles.body}>
-          <Text>
-            U-Learning - Web Development School{"\n"}
-            Maximilian Mustermann {"\n"}
-            {"\n"}
-            Musterstr. 10 {"\n"}
-            12345 Musterstadt {"\n"}
-            {"\n"}
-            Telefon: +49 (0)123 45 67 89 {"\n"}
-            Email: info@muster-online-shop.de {"\n"}
-            Webseite: www.muster-online-shop.de {"\n"}
-            {"\n"}
-            Finanzamt Musterstadt {"\n"}
-            USt-ID-Nr.: DE00000000
-          </Text>
+          <Image
+            source={{
+              uri: "https://images.unsplash.com/photo-1518577915332-c2a19f149a75?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=862&q=80",
+            }}
+            style={styles.profile}
+          />
+          <View style={styles.textInput}>
+            <TextInput
+              style={styles.input}
+              placeholder="Name"
+              keyboardType="default"
+            />
+            <TextInput
+              style={styles.input}
+              placeholder="E-Mail"
+              keyboardType="email-address"
+            />
+            <TextInput
+              style={styles.input}
+              placeholder="Password"
+              keyboardType="default"
+            />
+          </View>
         </View>
 
         <View style={styles.bottomView}>
+          <Button onPress={() => navigation.navigate("Login")} title="Login" />
+          <Button
+            onPress={() => navigation.navigate("Signin")}
+            title="Sign In"
+          />
           <Button onPress={() => navigation.navigate("Home")} title="Home" />
         </View>
       </View>
