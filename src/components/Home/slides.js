@@ -7,8 +7,8 @@ export default [
     },
     {
         id: "2",
-        title: "",
-        description: "Expert-instructors",
+        title: "Expert-instructors",
+        description: "",
         image: require("./img/Home2.png"),
     },   
     {

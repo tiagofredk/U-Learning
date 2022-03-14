@@ -5,6 +5,7 @@ import slides from './slides'
 // import OnboardItem from './OnboardItem'
 import Paginator from './Paginator'
 import Course2 from "./Course2";
+//
 
 const Onboarding1 = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -32,12 +33,14 @@ const Onboarding1 = () => {
         onScroll={Animated.event([{nativeEvent: {contentOffset: {x: scrollX}}}], {
           useNativeDriver: false,
         })}
+        
         scrollEventThrottle={32}
         onViewableItemsChanged={viewableItemsChanged}
         viewabilityConfig={viewConfig}
         ref={slidesRef}
       />
       <Paginator data={slides} scrollX={scrollX} />
+     
     </View>
   )
 }

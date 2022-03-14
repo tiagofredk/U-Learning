@@ -1,9 +1,11 @@
 import React, {useRef, useState} from "react";
-import { StyleSheet, Text, View, FlatList, Animated } from 'react-native'
+import { StyleSheet, Text, View, FlatList, Animated, Button } from 'react-native'
 
 import slides from './slides'
 import OnboardItem from './OnboardItem'
 import Paginator from './Paginator'
+import Tabnavigator from "../../navigation/Tabnavigator";
+
 
 const Onboarding1 = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -19,6 +21,7 @@ const Onboarding1 = () => {
   const viewConfig = useRef({viewAreaCoveragePercentThreshold: 50}).current;
 
   return (
+    <>
     <View style={{flex:3}}>
       <FlatList
         data={slides}
@@ -35,9 +38,14 @@ const Onboarding1 = () => {
         onViewableItemsChanged={viewableItemsChanged}
         viewabilityConfig={viewConfig}
         ref={slidesRef}
+        
       />
+      
       <Paginator data={slides} scrollX={scrollX} />
+      <Text>Create a button to home and Courses</Text>
     </View>
+
+    </>
   )
 }
 
