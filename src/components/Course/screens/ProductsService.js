@@ -3,7 +3,7 @@ const PRODUCTS = [
         id: 100,
         name: 'Web Software Development Course',
         // price: 450,
-        image: require('../../../../assets/src/Mockspics/WebSoftwareDevelopment.jpg'),
+        image: require('../../../../assets/src/Mockspics/WebSoftwareDevelopment.png'),
         description: 'Come learn programming with the guys who program facebook and airBnb'
     },
     {
