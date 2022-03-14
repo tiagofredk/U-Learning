@@ -26,8 +26,8 @@ const ListContent = ({ item }) => {
         return <AppLoading />
     } else {
         return (
-            <View style={[styles.container, { width }]}>
-                <Image source={item.image} style={[styles.image, { width, resizeMode: "contain" }]} />
+            <View style={[styles.container]}>
+                <Image source={item.image} style={[styles.image, { resizeMode: "contain" }]} />
                 <View style={{ flex: 0.3 }} >
                     <Text style={styles.title} >{item.title} </Text>
                     <Text style={styles.description}>{item.description} </Text>
@@ -41,18 +41,27 @@ export default ListContent
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center"
+        // flex: 1,
+        // justifyContent: "center",
+        // alignItems: "center",
+        // backgroundColor: "#cacaca",
+        height: 200,
+        width: 200,
+        marginHorizontal: 10,
     },
     image: {
         flex: 0.7,
-        justifyContent: "center"
+        width: 180,
+        // justifyContent: "center",
+        // alignItems:"center",
+        // alignContent: "center",
+        // marginRight: 20,
+        // backgroundColor:"red"
     },
     title: {
         fontWeight: "800",
-        fontSize: 28,
-        marginBottom: 10,
+        fontSize: 14,
+        // marginBottom: 1,
         color: "#493d8a",
         textAlign: "center",
         fontFamily: "PlayfairDisplay_400Regular",

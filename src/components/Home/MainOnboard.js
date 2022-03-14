@@ -38,7 +38,7 @@ export default function MainOnboard() {
             navigation.navigate("Home")
             :
             <View style={styles.containerNav}>
-              <Text style={styles.text} onPress={() => navigation.navigate("HomeStack")}>
+              <Text style={styles.text} onPress={() => navigation.navigate("Home")}>
                 Skip
               </Text>
               <Text style={styles.text} onPress={() => navigation.navigate("LoginDecision")}>
