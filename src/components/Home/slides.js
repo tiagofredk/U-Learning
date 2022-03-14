@@ -1,20 +1,21 @@
 export default [
     {
         id: "1",
-        title: "Take Online Courses",
-        description: "Develop your coding skils",
-        image: require("./img/undraw1.png"),
+        title: "U-Learning",
+        description: "Your Tech School",
+        image: require("./img/Home1.png"),
     },
     {
         id: "2",
-        title: "Learn from the Best",
+        title: "",
         description: "Expert-instructors",
-        image: require("./img/undraw3.png"),
+        image: require("./img/Home2.png"),
     },
     {
         id: "3",
-        title: "High-End Tecnologies",
-        description: "Learn skills for the future",
-        image: require("./img/undraw2.png"),
+        title: "Testimonies",
+        description: "",
+        image: require("./img/Home3.png"),
     },
+    
 ]
