@@ -19,7 +19,9 @@ export default OnboardItem
 
 const styles = StyleSheet.create({
     container: {
+        backgroundColor: "#ADD8E6",
         flex: 1,
+        paddingTop: 50,
         justifyContent: "center",
         alignItems: "center"
     },
@@ -35,9 +37,10 @@ const styles = StyleSheet.create({
         textAlign:"center"
     },
     description: {
-        fontWeight:"300",
+        fontWeight:"bold",
+        fontSize: 20,
         color: "#62656b",
-        textAlign:"center",
-        paddingHorizontal: 64,
+        textAlign: "justify",
+        paddingHorizontal: 4,
     }
 })
