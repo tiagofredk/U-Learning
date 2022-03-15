@@ -32,7 +32,7 @@ export default Module1
 
 const styles = StyleSheet.create({
   container:{
-    marginTop:20
+    marginTop:10
   },
   img: {
     width: 350,
@@ -42,11 +42,12 @@ const styles = StyleSheet.create({
     fontFamily:"PlayfairDisplay_600SemiBold",
     fontSize:23,
     padding:5,
-    // textAlign:"center"
+    // color:"#493d8a",
   },
   text: {
     fontFamily:"PlayfairDisplay_400Regular",
     fontSize:14,
-    textAlign:"center"
+    textAlign:"center",
+    color:"#493d8a",
   }
 })

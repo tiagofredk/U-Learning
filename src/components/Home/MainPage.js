@@ -42,11 +42,11 @@ export default function MainPage() {
             }
           </View>
 
-          <Module1 />
+          <Module1/>
           <Text style={styles.courses}>Our Courses</Text>
-          <ListModule />
+          <ListModule/>
           <Text style={styles.news}>News</Text>
-          <ListNewsModule />
+          <ListNewsModule/>
         </SafeAreaView>
 
       </ScrollView>
