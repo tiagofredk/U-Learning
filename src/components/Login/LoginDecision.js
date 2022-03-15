@@ -18,7 +18,6 @@ const LoginDecision = () => {
         PlayfairDisplay_400Regular,
         PlayfairDisplay_500Medium,
         PlayfairDisplay_600SemiBold,
-
     });
 
     if (!fontsLoaded) {

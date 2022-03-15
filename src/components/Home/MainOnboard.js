@@ -34,9 +34,6 @@ export default function MainOnboard() {
       <SafeAreaView style={styles.container}>
         <Onboarding />
         <View style={styles.linkbox} >
-          {isLogedIn ?
-            navigation.navigate("Home")
-            :
             <View style={styles.containerNav}>
               <Text style={styles.text} onPress={() => navigation.navigate("HomeStack")}>
                 Skip
@@ -45,7 +42,6 @@ export default function MainOnboard() {
                 Sign In
               </Text>
             </View>
-          }
         </View>
       </SafeAreaView>
     )

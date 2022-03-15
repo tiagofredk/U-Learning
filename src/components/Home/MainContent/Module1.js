@@ -20,7 +20,7 @@ const Module1 = () => {
   } else {
     return (
       <View style={styles.container}>
-        <Image style={styles.img} source={require("../img/Grow-2.png")} />
+        <Image style={styles.img} source={require("../img/top.png")} />
         <Text style={styles.h1} >The digital world moves quickly!</Text>
         <Text style={styles.text}>Courses designed to help you reach your goals.</Text>
       </View>
