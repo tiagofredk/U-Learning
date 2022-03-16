@@ -3,7 +3,12 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import React from 'react'
 import MainPage from '../Home/MainPage';
 import Courses from '../Course/Courses';
+<<<<<<< HEAD
 import UserProfile from "../User/UserProfile"
+=======
+// import Cart from '../Cart/Cart'
+import UserProfile from "../User/UserProfile";
+>>>>>>> dev
 import { Ionicons } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
