@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, ScrollView } from 'react-native';
 import { useContext } from 'react';
 import { MainContext } from '../../context/MainContext';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -13,9 +13,10 @@ import {
 import AppLoading from 'expo-app-loading';
 import Module1 from './MainContent/Module1';
 import ListModule from './MainContent/ListModule';
+import ListNewsModule from './MainContent/NewsList/ListNewsModule';
 
 export default function MainPage() {
-  const { user, setUser, isLogedIn } = useContext(MainContext)
+  const { user, setUser, isLogedIn } = useContext(MainContext);
   const navigation = useNavigation();
   let [fontsLoaded] = useFonts({
     PlayfairDisplay_400Regular,
@@ -27,26 +28,28 @@ export default function MainPage() {
     return <AppLoading />
   } else {
     return (
-      <SafeAreaView style={styles.container}>
-        <View style={styles.linkbox} >
-          {isLogedIn ?
-            <>
-              <Text style={styles.text}>Hello {user}</Text>
-            </>
-            :
-            <Text style={styles.text} onPress={() => navigation.navigate("LoginDecision")} title="Login">
-              Sign In
-            </Text>
-          }
-        </View>
-        
-          <Module1 />
-          <Text style={styles.featured}>Our Courses</Text>
-          <ListModule />
-          <Text style={styles.news}>News</Text>
-          {/* <ListModule /> */}
+      <ScrollView >
+        <SafeAreaView style={styles.container}>
+          <View style={styles.linkbox} >
+            {isLogedIn ?
+              <>
+                <Text style={styles.text}>Hello {user}</Text>
+              </>
+              :
+              <Text style={styles.text} onPress={() => navigation.navigate("LoginDecision")} title="Login">
+                Sign In
+              </Text>
+            }
+          </View>
 
-      </SafeAreaView>
+          <Module1/>
+          <Text style={styles.courses}>Our Courses</Text>
+          <ListModule/>
+          <Text style={styles.news}>News</Text>
+          <ListNewsModule/>
+        </SafeAreaView>
+
+      </ScrollView>
     )
   }
 }
@@ -54,7 +57,7 @@ export default function MainPage() {
 const styles = StyleSheet.create({
   container: {
     // flex: 1,
-    backgroundColor: '#ffffff',
+    backgroundColor: "#f5f5f5",
     // alignItems: 'center',
     // justifyContent: 'center',
   },
@@ -71,16 +74,16 @@ const styles = StyleSheet.create({
     marginRight: 10,
     alignItems: "flex-end",
   },
-  featured: {
+  courses: {
     marginTop: 30,
     marginLeft: 30,
-    fontSize:19,
-    fontWeight:"bold"
+    fontSize: 19,
+    fontWeight: "bold"
   },
-  news:{
+  news: {
     marginTop: 30,
     marginLeft: 30,
-    fontSize:19,
-    fontWeight:"bold"
+    fontSize: 19,
+    fontWeight: "bold"
   }
 });

@@ -10,9 +10,7 @@ import {
 
 import AppLoading from 'expo-app-loading';
 
-
-
-const ListContent = ({ item }) => {
+const NewsListContent = ({ item }) => {
     
     let [fontsLoaded] = useFonts({
         PlayfairDisplay_400Regular,
@@ -25,8 +23,8 @@ const ListContent = ({ item }) => {
         return <AppLoading />
     } else {
         return (
-            <View style={[styles.container]}>
-                <Image source={item.image} style={[styles.image, { resizeMode: "contain" }]} />
+            <View style={[styles.container, styles.card, styles.elevation]}>
+                <Image source={item.image} style={[styles.image]} />
                 <View style={{ flex: 0.3 }} >
                     <Text style={styles.title} >{item.title} </Text>
                     <Text style={styles.description}>{item.description} </Text>
@@ -36,7 +34,7 @@ const ListContent = ({ item }) => {
     }
 }
 
-export default ListContent
+export default NewsListContent
 
 const styles = StyleSheet.create({
     container: {
@@ -47,10 +45,14 @@ const styles = StyleSheet.create({
         height: 200,
         width: 200,
         marginHorizontal: 10,
+        // borderWidth: 1,
+        // borderColor: "#000",
     },
     image: {
-        flex: 0.7,
-        width: 180,
+        flex: 1.2,
+        width: 170,
+        // height: 170,
+        resizeMode: "cover"
         // justifyContent: "center",
         // alignItems:"center",
         // alignContent: "center",
@@ -69,7 +71,19 @@ const styles = StyleSheet.create({
         fontWeight: "300",
         color: "#62656b",
         textAlign: "center",
-        paddingHorizontal: 64,
+        // paddingHorizontal: 4,
         fontFamily: "PlayfairDisplay_400Regular",
-    }
+    },
+    card: {
+        backgroundColor: 'white',
+        borderRadius: 8,
+        paddingVertical: 45,
+        paddingHorizontal: 25,
+        // width: '100%',
+        marginVertical: 10,
+    },
+    elevation: {
+        elevation: 20,
+        shadowColor: '#493d8a',
+    },
 })

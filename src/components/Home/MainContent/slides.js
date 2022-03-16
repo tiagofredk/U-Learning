@@ -1,20 +1,38 @@
 export default [
     {
         id: "1",
-        title: "Take Online Courses",
-        description: "Develop your coding skils",
-        image: require("../img/undraw1.png"),
+        title: "Web Development",
+        description: "Full-time | 12 months",
+        image: require("../img/undraw_webdev.png"),
     },
     {
         id: "2",
-        title: "Learn from the Best",
-        description: "Expert-instructors",
-        image: require("../img/undraw3.png"),
+        title: "Online Marketing",
+        description: "Full-time | 12 months",
+        image: require("../img/marketing.png"),
     },
     {
         id: "3",
-        title: "High-End Tecnologies",
-        description: "Learn skills for the future",
-        image: require("../img/undraw2.png"),
+        title: "AWS re/Start Program",
+        description: "Full-time | 3 months",
+        image: require("../img/aws.png"),
+    },
+    {
+        id: "4",
+        title: "Python Backend Programming",
+        description: "Full-time | 10 months",
+        image: require("../img/img3.png"),
+    },
+    {
+        id: "5",
+        title: "Java Backend Programing",
+        description: "Full-time | 12 months",
+        image: require("../img/img2.png"),
+    },
+    {
+        id: "6",
+        title: "Orientation Course",
+        description: "Full-time | 4 weeks",
+        image: require("../img/orientation.png"),
     },
 ]

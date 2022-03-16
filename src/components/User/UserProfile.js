@@ -86,6 +86,7 @@ const UserProfile = () => {
             title="Sign In"
           />
           <Button onPress={() => navigation.navigate("Home")} title="Home" />
+          <Button onPress={() => logout()} title="Disconnect" />
         </View>
       </View>
     </SafeAreaView>
