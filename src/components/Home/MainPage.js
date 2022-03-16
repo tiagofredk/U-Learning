@@ -1,32 +1,89 @@
 import React from 'react'
-import { StyleSheet, Text, View, Button } from 'react-native';
+import { StyleSheet, Text, View, ScrollView } from 'react-native';
 import { useContext } from 'react';
 import { MainContext } from '../../context/MainContext';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
-
+import {
+  useFonts,
+  PlayfairDisplay_400Regular,
+  PlayfairDisplay_500Medium,
+  PlayfairDisplay_600SemiBold,
+} from '@expo-google-fonts/playfair-display';
+import AppLoading from 'expo-app-loading';
+import Module1 from './MainContent/Module1';
+import ListModule from './MainContent/ListModule';
+import ListNewsModule from './MainContent/NewsList/ListNewsModule';
 
 export default function MainPage() {
-  const {user, setUser} = useContext(MainContext)
+  const { user, setUser, isLogedIn } = useContext(MainContext);
   const navigation = useNavigation();
-  return (
-    <SafeAreaView style={styles.container}>
-      <Text >Main Page</Text>
-        <Text>{user}</Text>
-        <Button onPress={()=> navigation.navigate("Login") } title="Login"/>
-        <Button onPress={()=> navigation.navigate("Impressum") } title="Impressum"/>
-        <Button onPress={()=> navigation.navigate("Courses") } title="Courses"/>
-        <Button onPress={()=> navigation.navigate("Cart") } title="Cart"/>
-        <Button onPress={()=> navigation.navigate("UserProfile") } title="User"/>
-    </SafeAreaView>
-  )
+  let [fontsLoaded] = useFonts({
+    PlayfairDisplay_400Regular,
+    PlayfairDisplay_500Medium,
+    PlayfairDisplay_600SemiBold,
+  });
+
+  if (!fontsLoaded) {
+    return <AppLoading />
+  } else {
+    return (
+      <ScrollView >
+        <SafeAreaView style={styles.container}>
+          <View style={styles.linkbox} >
+            {isLogedIn ?
+              <>
+                <Text style={styles.text}>Hello {user}</Text>
+              </>
+              :
+              <Text style={styles.text} onPress={() => navigation.navigate("LoginDecision")} title="Login">
+                Sign In
+              </Text>
+            }
+          </View>
+
+          <Module1/>
+          <Text style={styles.courses}>Our Courses</Text>
+          <ListModule/>
+          <Text style={styles.news}>News</Text>
+          <ListNewsModule/>
+        </SafeAreaView>
+
+      </ScrollView>
+    )
+  }
 }
 
 const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      backgroundColor: '#a97b7b',
-      alignItems: 'center',
-      justifyContent: 'center',
-    }
-  });
+  container: {
+    // flex: 1,
+    backgroundColor: "#f5f5f5",
+    // alignItems: 'center',
+    // justifyContent: 'center',
+  },
+  text: {
+    fontSize: 18,
+    fontFamily: "PlayfairDisplay_600SemiBold",
+    // backgroundColor:"red",
+    // marginRight:0,
+    color: "#3b3b3b",
+  },
+  linkbox: {
+    // width: 250,
+    marginTop: 10,
+    marginRight: 10,
+    alignItems: "flex-end",
+  },
+  courses: {
+    marginTop: 30,
+    marginLeft: 30,
+    fontSize: 19,
+    fontWeight: "bold"
+  },
+  news: {
+    marginTop: 30,
+    marginLeft: 30,
+    fontSize: 19,
+    fontWeight: "bold"
+  }
+});
