@@ -47,7 +47,10 @@ export default function App() {
             <Stack.Screen name="Signin" component={SignupForm} />
             <Stack.Screen name="Onboarding1" component={Onboarding1} />
           </Stack.Navigator>
-          <StatusBar style={styles.container} />
+          <StatusBar 
+          style="dark" 
+          backgroundColor='#f5f5f5'
+          />
         </MainContextProvider>
       </NavigationContainer>
     )
@@ -56,6 +59,6 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#fff"
+    backgroundColor: "#fff",
   }
 })

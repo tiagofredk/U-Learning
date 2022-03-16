@@ -28,28 +28,30 @@ export default function MainPage() {
     return <AppLoading />
   } else {
     return (
-      <ScrollView >
-        <SafeAreaView style={styles.container}>
-          <View style={styles.linkbox} >
-            {isLogedIn ?
-              <>
-                <Text style={styles.text}>Hello {user}</Text>
-              </>
-              :
-              <Text style={styles.text} onPress={() => navigation.navigate("LoginDecision")} title="Login">
-                Sign In
-              </Text>
-            }
-          </View>
+      <View>
+        <View style={styles.linkbox} >
+          {isLogedIn ?
+            <>
+              <Text style={styles.text}>Hello {user}</Text>
+            </>
+            :
+            <Text style={styles.text} onPress={() => navigation.navigate("LoginDecision")} title="Login">
+              Sign In
+            </Text>
+          }
+        </View>
+        <ScrollView >
+          <SafeAreaView style={styles.container}>
 
-          <Module1/>
-          <Text style={styles.courses}>Our Courses</Text>
-          <ListModule/>
-          <Text style={styles.news}>News</Text>
-          <ListNewsModule/>
-        </SafeAreaView>
+            <Module1 />
+            <Text style={styles.courses}>Our Courses</Text>
+            <ListModule />
+            <Text style={styles.news}>News</Text>
+            <ListNewsModule />
+          </SafeAreaView>
 
-      </ScrollView>
+        </ScrollView>
+      </View>
     )
   }
 }
@@ -57,6 +59,7 @@ export default function MainPage() {
 const styles = StyleSheet.create({
   container: {
     // flex: 1,
+    marginTop: 0,
     backgroundColor: "#f5f5f5",
     // alignItems: 'center',
     // justifyContent: 'center',
@@ -70,9 +73,15 @@ const styles = StyleSheet.create({
   },
   linkbox: {
     // width: 250,
-    marginTop: 10,
+    marginTop: 30,
     marginRight: 10,
     alignItems: "flex-end",
+    // position: "absolute",
+    // top: 0,
+    // left:0,
+    // right:0,
+    // backgroundColor: "red",
+    backgroundColor: "#f5f5f5"
   },
   courses: {
     marginTop: 30,

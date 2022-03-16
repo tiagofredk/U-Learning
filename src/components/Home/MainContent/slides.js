@@ -19,7 +19,7 @@ export default [
     },
     {
         id: "4",
-        title: "Python Backend Programming",
+        title: "Python Backend",
         description: "Full-time | 10 months",
         image: require("../img/img3.png"),
     },
