@@ -37,7 +37,6 @@ export default function App() {
 
   // Stack navigation in the app will gives a possibility to hide tab bar in some screens
   return (
-<<<<<<< HEAD
     firstLaunch != null && (
       <NavigationContainer>
         <MainContextProvider>
@@ -55,27 +54,6 @@ export default function App() {
         </MainContextProvider>
       </NavigationContainer>
     )
-=======
-    <NavigationContainer>
-      <MainContextProvider>
-        {/* <MainOnboard /> */}
-        {/* <Tabnavigator/> */}
-        <Stack.Navigator screenOptions={{ headerShown: false }}>
-          <Stack.Screen name="MainOnboard" component={MainOnboard} />
-          <Stack.Screen name="HomeStack" component={Tabnavigator} />
-          <Stack.Screen name="LoginDecision" component={LoginDecision} />
-          <Stack.Screen name="Login" component={Login} />
-          <Stack.Screen name="Signin" component={SignupForm} />
-          <Stack.Screen name="Onboarding1" component={Onboarding1}/>
-          {/* <Stack.Screen name="LoginDecision" component={LoginDecision} />
-          <Stack.Screen name="Login" component={Login} />
-          <Stack.Screen name="Signin" component={Signin} /> */}
-          {/* <Stack.Screen name="Impressum" component={Impressum}/> */}
-        </Stack.Navigator>
-        <StatusBar style="dark" />
-      </MainContextProvider>
-    </NavigationContainer>
->>>>>>> dev
   );
 }
 
