@@ -13,7 +13,7 @@ const ListModule = () => {
     snapToAlignment={"start"}
     scrollEventThrottle={16}
     decelerationRate="fast"
-    style={{marginTop: 20}}
+    style={styles.renderview}
     renderItem={({ item }) => <ListContent item={item} />}
     />
   )
@@ -23,9 +23,10 @@ export default ListModule
 
 const styles = StyleSheet.create({
     renderview:{
-        backgroundColor: "#afafaf",
-        height: 200,
-        width: 200,
-        marginHorizontal: 10,
+      height: 240,
+        // backgroundColor: "#afafaf",
+        // height: 200,
+        // width: 200,
+        // marginHorizontal: 10,
     }
 })

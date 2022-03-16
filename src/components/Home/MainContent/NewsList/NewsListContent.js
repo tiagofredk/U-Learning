@@ -43,15 +43,14 @@ const styles = StyleSheet.create({
         // alignItems: "center",
         // backgroundColor: "#cacaca",
         height: 200,
-        width: 200,
-        marginHorizontal: 10,
+        width: 180,
+        marginHorizontal: 20,
         // borderWidth: 1,
         // borderColor: "#000",
     },
     image: {
         flex: 1.2,
         width: 170,
-        // height: 170,
         resizeMode: "cover"
         // justifyContent: "center",
         // alignItems:"center",
@@ -77,8 +76,8 @@ const styles = StyleSheet.create({
     card: {
         backgroundColor: 'white',
         borderRadius: 8,
-        paddingVertical: 45,
-        paddingHorizontal: 25,
+        paddingVertical: 5,
+        paddingHorizontal: 5,
         // width: '100%',
         marginVertical: 10,
     },

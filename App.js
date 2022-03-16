@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { StatusBar } from 'expo-status-bar';
 import MainOnboard from './src/components/Home/MainOnboard';
@@ -16,15 +17,11 @@ export default function App() {
   const Stack = createNativeStackNavigator();
 
   const [firstLaunch, setFirstLaunch] = useState(null);
-  console.log("the value of useState");
-  console.log(firstLaunch);
 
   // if its not the first time user get to the app the Onboard screen will not appear
   useEffect(async () => {
 
     const appData = await AsyncStorage.getItem("firstLaunch"); // fetch data from localStorage
-
-    console.log(appData);
 
     if (appData == null) {
       setFirstLaunch(true);
@@ -32,7 +29,7 @@ export default function App() {
     } else {
       setFirstLaunch("firstLaunch", "false");
     }
-    console.log(firstLaunch);
+    
   }, []);
 
   // Stack navigation in the app will gives a possibility to hide tab bar in some screens
@@ -50,10 +47,15 @@ export default function App() {
             <Stack.Screen name="Signin" component={SignupForm} />
             <Stack.Screen name="Onboarding1" component={Onboarding1} />
           </Stack.Navigator>
-          <StatusBar style="dark" />
+          <StatusBar style={styles.container} />
         </MainContextProvider>
       </NavigationContainer>
     )
   );
 }
 
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: "#fff"
+  }
+})

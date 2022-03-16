@@ -13,7 +13,7 @@ const ListNewsModule = () => {
     snapToAlignment={"start"}
     scrollEventThrottle={16}
     decelerationRate="fast"
-    style={{marginTop: 20}}
+    style={styles.renderview}
     renderItem={({ item }) => <NewsListContent item={item} />}
     />
   )
@@ -23,9 +23,9 @@ export default ListNewsModule
 
 const styles = StyleSheet.create({
     renderview:{
-        backgroundColor: "#afafaf",
-        height: 200,
-        width: 200,
-        marginHorizontal: 10,
+        // backgroundColor: "#afafaf",
+        height: 240,
+        // width: 200,
+        // marginHorizontal: 10,
     }
 })
