@@ -1,6 +1,7 @@
 import React, {useRef, useState} from "react";
 import { StyleSheet, Text, View, FlatList, Animated, Button } from 'react-native'
 
+
 import slides from './slides'
 import OnboardItem from './OnboardItem'
 import Paginator from './Paginator'
@@ -82,7 +83,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     padding: 10, 
     alignItems: 'stretch', 
-    textAlign: 'center',
+    justifyContent: 'space-between',
   },
   courses:{
     backgroundColor: 'red',

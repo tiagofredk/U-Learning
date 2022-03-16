@@ -8,12 +8,15 @@ import UserProfile from "../User/UserProfile"
 import { Ionicons } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
+import { useRoute } from '@react-navigation/native';
 // import {HomeStack, CoursesStack} from './StackNavigator';
 
 const Tabnavigator = () => {
   
     const Tab = createBottomTabNavigator();
-  
+    const route = useRoute()
+    console.log(route);
+    
     return (
     <Tab.Navigator screenOptions={{ 
         headerShown: false,
