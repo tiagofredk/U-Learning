@@ -5,6 +5,8 @@ import { StyleSheet, Text, View, FlatList, Animated, Button } from 'react-native
 import slides from './slides'
 import OnboardItem from './OnboardItem'
 import Paginator from './Paginator'
+import UserProfile from "../../User/UserProfile";
+import Chat from "../../Chat/Chat";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { MaterialIcons } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
@@ -58,14 +60,14 @@ const Onboarding1 = () => {
       <View style={styles.tab}>
           
         <Text style={styles.button} onPress={()=> navigation.navigate ("Courses") }>
-          <MaterialIcons name="storefront" size={40}  color={'red'} /></Text>
+          <MaterialIcons name="storefront" size={35}  color='#ADD8E6' /></Text>
         <Text style={styles.button} onPress={()=> navigation.navigate ("Chat") }>
-          <AntDesign name="wechat" size={40} color="red" />
+          <AntDesign name="wechat" size={35} color="#ADD8E6" />
         </Text>
         <Text style={styles.button} onPress={()=> navigation.navigate ("News") }>
-          <Entypo name="news" size={40} color="red" /></Text>
-        <Text style={styles.button} onPress={()=> navigation.navigate ("User") }>
-          <AntDesign name="user" size={40} color="red" />
+          <Entypo name="news" size={35} color="#ADD8E6" /></Text>
+        <Text style={styles.button} onPress={()=> navigation.navigate ("UserProfile") }>
+          <AntDesign name="user" size={35} color="#ADD8E6" />
         </Text>
       </View>
 
@@ -79,11 +81,11 @@ export default Onboarding1
 
 const styles = StyleSheet.create({
   tab:{
-    backgroundColor: '#646464',
+    backgroundColor: '#ffffff',
     flexDirection: 'row',
-    padding: 10, 
-    alignItems: 'stretch', 
-    justifyContent: 'space-between',
+    padding: 6, 
+    //alignItems: 'center', 
+    justifyContent: 'space-around',
   },
   courses:{
     backgroundColor: 'red',

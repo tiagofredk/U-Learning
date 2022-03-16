@@ -44,6 +44,6 @@ const styles = StyleSheet.create({
         fontSize: 20,
         color: "#62656b",
         textAlign: "justify",
-        paddingHorizontal: 4,
+        paddingHorizontal: 6,
     }
 })

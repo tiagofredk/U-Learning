@@ -15,8 +15,7 @@ import { useRoute } from '@react-navigation/native';
 const Tabnavigator = () => {
   
     const Tab = createBottomTabNavigator();
-    const route = useRoute()
-    console.log(route);
+    
     
     return (
     <Tab.Navigator screenOptions={{ 
@@ -25,17 +24,17 @@ const Tabnavigator = () => {
       }}>
         <Tab.Screen name="Home" component={MainPage} options={{
             tabBarIcon: ({color, size}) => (
-               <Ionicons name="ios-home-outline" size={size} color={'#000000'} />
+               <Ionicons name="ios-home-outline" size={size} color={'#ADD8E6'} />
                 )
         }} />
         <Tab.Screen name="Courses" component={Courses} options={{
             tabBarIcon: ({color, size}) => (
-                <MaterialIcons name="storefront" size={size} color={'#000000'} />
+                <MaterialIcons name="storefront" size={size} color={'#ADD8E6'} />
             )
         }}/>       
         <Tab.Screen name="Account" component={UserProfile} options={{
             tabBarIcon: ({color, size}) => (
-                <AntDesign name="user" size={size} color={'#000000'} />
+                <AntDesign name="user" size={size} color={'#ADD8E6'} />
             )
         }}/>
       </Tab.Navigator>
