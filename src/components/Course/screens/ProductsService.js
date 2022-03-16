@@ -8,16 +8,16 @@ const PRODUCTS = [
     },
     {
         id: 101,
-        name: 'Creative Writing Course',
+        name: 'AWS re/Start Program',
         // price: 600,
-        image: require('../../../../assets/src/Mockspics/CreativeWritingSchool.png'),
+        image: require('../../../../assets/src/Mockspics/aws1.png'),
         description: 'Learn from the best writers and screenwriters of the best Brazilian soap operas'
     },
     {
         id: 102,
-        name: 'Languages ​​course',
+        name: 'On-Line Marketing',
         // price: 100,
-        image: require('../../../../assets/src/Mockspics/EducationCourses.png'),
+        image: require('../../../../assets/src/Mockspics/olinemarketing.png'),
         description: 'Choose between German, English and Portuguese to learn together with the best and renowned teachers.'
     }
 ];
