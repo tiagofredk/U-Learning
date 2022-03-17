@@ -11,6 +11,7 @@ import Login from './src/components/Login/Login';
 import SignupForm from './src/components/Signin/Signin';
 import Onboarding1 from './src/components/Course/courseOnboarding/Onboarding1';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import ContactForm from './src/components/Contact/ContactForm';
 
 export default function App() {
 
@@ -46,6 +47,7 @@ export default function App() {
             <Stack.Screen name="Login" component={Login} />
             <Stack.Screen name="Signin" component={SignupForm} />
             <Stack.Screen name="Onboarding1" component={Onboarding1} />
+            <Stack.Screen name="Contact" component={ContactForm} />
           </Stack.Navigator>
           <StatusBar 
           style="dark" 

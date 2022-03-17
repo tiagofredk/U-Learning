@@ -22,10 +22,8 @@ const ListNewsModule = () => {
 export default ListNewsModule
 
 const styles = StyleSheet.create({
-    renderview:{
-        // backgroundColor: "#afafaf",
+    renderview:{        
         height: 240,
-        // width: 200,
-        // marginHorizontal: 10,
+        marginBottom: 100
     }
 })

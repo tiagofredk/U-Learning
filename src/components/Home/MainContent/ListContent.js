@@ -8,9 +8,11 @@ import {
     PlayfairDisplay_600SemiBold,
 } from '@expo-google-fonts/playfair-display';
 import AppLoading from 'expo-app-loading';
+import { useNavigation } from '@react-navigation/native';
 
 const ListContent = ({ item }) => {
     const width = useWindowDimensions()
+    const navigation = useNavigation()
 
     const [modalVisible, setModalVisible] = useState(false);
 
@@ -40,7 +42,7 @@ const ListContent = ({ item }) => {
                         {/* <Text style={{textAlign: "center", padding:5}}>About the course</Text> */}
                         <Text style={styles.modaldescription}>{item.overview}</Text>
                         <Text style={{ textAlign: "center", marginTop: 40 }}>LAUNCH YOUR CAREER IN TECH NOW!</Text>
-                        <TouchableOpacity style={styles.modalbutton}>
+                        <TouchableOpacity onPress={()=> navigation.navigate("Contact")} style={styles.modalbutton}>
                             <Text style={{textAlign: "center",}}>Apply Now</Text>
                         </TouchableOpacity>
                     </View>

@@ -42,7 +42,6 @@ export default function MainPage() {
         </View>
         <ScrollView >
           <SafeAreaView style={styles.container}>
-
             <Module1 />
             <Text style={styles.courses}>Our Courses</Text>
             <ListModule />
