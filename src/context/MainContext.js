@@ -1,8 +1,8 @@
 import axios from "axios";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState, createContext } from "react";
 import { getProduct } from "../components/Course/screens/ProductsService";
 
-export const MainContext = React.createContext();
+export const MainContext = createContext();
 
 export const MainContextProvider = ({ children }) => {
   const [user, setUser] = useState("");
@@ -43,7 +43,7 @@ export const MainContextProvider = ({ children }) => {
     }
     sincronize()
 
-  }, [isLogedIn, user, setUser]);
+  }, [isLogedIn, user]);
 
   function addItemToCart(id){
     const product = getProduct(id);

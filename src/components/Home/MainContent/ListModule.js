@@ -12,7 +12,7 @@ const ListModule = () => {
     horizontal
     snapToAlignment={"start"}
     scrollEventThrottle={16}
-    decelerationRate="fast"
+    decelerationRate="normal"
     style={styles.renderview}
     renderItem={({ item }) => <ListContent item={item} />}
     />
