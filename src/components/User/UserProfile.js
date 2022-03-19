@@ -13,7 +13,7 @@ const UserProfile = () => {
 
   const navigation = useNavigation();
 
-  const { user, isLogedIn, setIsLogedIn, profile } = useContext(MainContext);
+  const { user, isLogedIn, setIsLogedIn, profile, setProfile } = useContext(MainContext);
 
   const logout = async () => {
     try {
@@ -26,7 +26,9 @@ const UserProfile = () => {
       );
 
       setIsLogedIn(false);
-
+      setProfile(fullname="")
+      setProfile(email="")
+      
       navigation.navigate("Home");
     } catch (err) {
       alert(err);
@@ -71,21 +73,19 @@ const UserProfile = () => {
                 <AntDesign name="right" size={18} color="#aaaaaa" />
               </View>
             </View>
-
             
               <TouchableOpacity onPress={() => logout()} style={styles.button} >
                 <Text style={{ textAlign: "center" }}>Disconnect</Text>
               </TouchableOpacity>
             
-
           </View>
+
           :
-          <>
+          
             <TouchableOpacity onPress={() => navigation.navigate("Login")} style={[styles.button, {marginTop:100}]} >
               <Text style={{ textAlign: "center" }}>Login</Text>
             </TouchableOpacity>
-          </>
-          // <Button onPress={() => navigation.navigate("Login")} title="Login" />
+          
         }
       </View>
 

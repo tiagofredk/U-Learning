@@ -10,6 +10,7 @@ import {
     PlayfairDisplay_600SemiBold,
 } from '@expo-google-fonts/playfair-display';
 import AppLoading from 'expo-app-loading';
+import Nav from '../utils/Nav';
 
 const LoginDecision = () => {
     const navigation = useNavigation();
@@ -46,6 +47,7 @@ const LoginDecision = () => {
                     <Text>New Here?</Text>
                     <Text style={styles.span}  onPress={() => navigation.navigate("Signin")}> Create an account</Text>
                 </View>
+                <Nav/>
             </View>
         )
     }

@@ -1,5 +1,6 @@
-import { StyleSheet, Text, View, Image, Modal, Pressable, TouchableOpacity, useWindowDimensions } from 'react-native'
 import React, { useState } from 'react'
+import { StyleSheet, Text, View, Image, Modal, Pressable, TouchableOpacity, useWindowDimensions } from 'react-native'
+import { MaterialIcons } from '@expo/vector-icons';
 
 import {
     useFonts,
@@ -37,15 +38,29 @@ const ListContent = ({ item }) => {
                         <Image source={item.image} style={styles.modalimage} />
                         <Text style={styles.modaltitle} >{item.title}</Text>
                         <Text style={[styles.modaldescription, { textAlign: "center" }]}>{item.description}</Text>
-                        <Text style={styles.modaltext} onPress={() => setModalVisible(false)}>{item.text}</Text>
+                        <Text style={styles.modaltext} >{item.text}</Text>
                         <Text style={{ textAlign: "center", marginTop: 10 }}>COURSE OVERVIEW</Text>
                         {/* <Text style={{textAlign: "center", padding:5}}>About the course</Text> */}
                         <Text style={styles.modaldescription}>{item.overview}</Text>
                         <Text style={{ textAlign: "center", marginTop: 40 }}>LAUNCH YOUR CAREER IN TECH NOW!</Text>
-                        <TouchableOpacity onPress={()=> navigation.navigate("Contact")} style={styles.modalbutton}>
-                            <Text style={{textAlign: "center",}}>Apply Now</Text>
+                        <TouchableOpacity onPress={() => navigation.navigate("Contact")} style={styles.modalbutton}>
+                            <Text style={{ textAlign: "center", }}>Apply Now</Text>
                         </TouchableOpacity>
                     </View>
+
+                    <Pressable
+                        onPressIn={() => setModalVisible(false)}
+                        style={{
+                            flexDirection: "row",
+                            alignSelf: "flex-end",
+                            marginBottom: 0,
+                            marginTop: 40,
+                            marginRight: 20
+                        }}>
+                        <MaterialIcons name="arrow-back-ios" size={24} color="black" />
+                        <Text>Close</Text>
+                    </Pressable>
+
                 </Modal>
 
                 <Pressable onPress={() => setModalVisible(true)}>
@@ -57,6 +72,7 @@ const ListContent = ({ item }) => {
                         </View>
                     </View>
                 </Pressable>
+
 
             </View>
 
@@ -135,7 +151,7 @@ const styles = StyleSheet.create({
         borderRadius: 5,
         padding: 10,
         elevation: 2,
-        alignSelf:"center",
-        marginTop:20
+        alignSelf: "center",
+        marginTop: 20
     }
 })

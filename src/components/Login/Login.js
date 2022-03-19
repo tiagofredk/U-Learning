@@ -9,11 +9,11 @@ import FormInput from './FormInput'
 import { MainContext } from '../../context/MainContext'
 import { isValidEmail, isValidObjField, updateError } from '../utils/methods';
 import axios from 'axios'
-// import Tabnavigator from '../navigation/Tabnavigator'
+import Nav from '../utils/Nav'
 
 const Login = () => {
   const navigation = useNavigation();
-
+  
   const { setUser, isLogedIn, setIsLogedIn, profile, setProfile } = useContext(MainContext);
   const [userInfo, setUserInfo] = useState({
     email: '',
@@ -120,6 +120,7 @@ const Login = () => {
           <Text style={styles.text} onPress={() => navigation.navigate("Signin")}> Create an account</Text>
         </View>
       </FormContainer>
+      <Nav />
     </>
   )
 }

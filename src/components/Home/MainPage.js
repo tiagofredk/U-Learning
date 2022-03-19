@@ -2,7 +2,6 @@ import React from 'react'
 import { StyleSheet, Text, View, ScrollView } from 'react-native';
 import { useContext } from 'react';
 import { MainContext } from '../../context/MainContext';
-import { SafeAreaView } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
 import {
   useFonts,
@@ -42,13 +41,13 @@ export default function MainPage() {
           }
         </View>
         <ScrollView >
-          <SafeAreaView style={styles.container}>
+          <View style={styles.container}>
             <Module1 />
             <Text style={styles.courses}>Our Courses</Text>
             <ListModule />
             <Text style={styles.news}>News</Text>
             <ListNewsModule />
-          </SafeAreaView>
+          </View>
 
         </ScrollView>
       </View>
@@ -58,7 +57,7 @@ export default function MainPage() {
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 0,
+    marginTop: 3,
     backgroundColor: "#f5f5f5",
   },
   text: {
