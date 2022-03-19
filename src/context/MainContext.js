@@ -31,7 +31,8 @@ export const MainContextProvider = ({ children }) => {
         const userProfile={fullname, email};
 
         setIsLogedIn(true);
-        setUser(data.data.session.user.username)
+        // Split the firts name from fullname and set as user name
+        setUser(data.data.session.user.fullname.split(' ').slice(0, -1).join(' '))
         setProfile(userProfile);
 
         console.log("context fetch authentication response: SUCCESS")

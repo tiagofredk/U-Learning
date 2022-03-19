@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { StyleSheet } from 'react-native';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
@@ -12,58 +12,54 @@ import FormInputMessage from './FormInputMessage';
 
 const validationSchema = Yup.object({
   fullname: Yup.string()
-  .trim()
+    .trim()
     .min(3, 'Invalid name!')
     .required('Name is required!'),
-    email: Yup.string().email('Invalid email!').required('Email is required!'),
-    password: Yup.string()
-    .trim()
-    .min(8, 'Password is too short!')
-    .required('Password is required!'),
-    confirmPassword: Yup.string().equals(
-      [Yup.ref('password'), null],
-      'Password does not match!'
-      ),
-    });
-    
-    const ContactForm = () => {
-      const navigation = useNavigation();
-      const userInfo = {
-        name: '',
-        email: '',
-        telephone:"",
-        message: "",
-      };
-      
-      const [error, setError] = useState('');
-      
-      const { fullname, email, telephone, message } = userInfo;
+  email: Yup.string().email('Invalid email!').required('Email is required!'),
+});
 
-      const signUp = async (values, formikActions) => {
-        const res = await axios.post('https://ulearning-backend.vercel.app/message', {
-          ...values,
-    });
+const ContactForm = () => {
+
+  const navigation = useNavigation();
+
+  const userInfo = {
+    fullname: "",
+    email: "",
+    telephone: "",
+    message: "",
+  };
+
+  const [error, setError] = useState('');
+
+  const { fullname, email, telephone, message } = userInfo;
+
+  // console.log(userInfo)
+
+  const sendMessage = async (values, formikActions) => {
+     const res = await axios.post('https://ulearning-backend.vercel.app/message', {
+       ...values,
+     });
     
-    if(res.data.message){
-      alert("Success, Message sent")
-      navigation.navigate("HomeStack")
-    }
+     if (res.data.message) {
+       alert("Success, Message sent")
+       navigation.navigate("HomeStack")
+     }
 
     formikActions.resetForm();
     formikActions.setSubmitting(false);
   };
-  
+
   return (
     <FormContainer>
       <FormHeader
-      leftHeading='Contact Formular'
-      rightHeading='Back'
-      subHeading='Please fill with you basic information and one of our representative person will be in touch'
+        leftHeading='Contact Formular'
+        rightHeading='Back'
+        subHeading='Please fill with you basic information and one of our representative person will be in touch'
       />
       <Formik
         initialValues={userInfo}
         validationSchema={validationSchema}
-        onSubmit={signUp}
+        onSubmit={sendMessage}
       >
         {({
           values,
@@ -109,11 +105,10 @@ const validationSchema = Yup.object({
                 onChangeText={handleChange('message')}
                 onBlur={handleBlur('message')}
                 autoCapitalize='none'
-                secureTextEntry
                 label='Message'
                 placeholder='Your message'
               />
-              
+
               <FormSubmitButton
                 submitting={isSubmitting}
                 onPress={handleSubmit}
@@ -128,7 +123,7 @@ const validationSchema = Yup.object({
 };
 
 const styles = StyleSheet.create({
-  
+
 });
 
 export default ContactForm;

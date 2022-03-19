@@ -1,24 +1,19 @@
-import { Button, StyleSheet, View, Image, TextInput, Text } from "react-native";
-import React, { useContext, useEffect } from "react";
+import { Button, StyleSheet, View, Text, useWindowDimensions, TouchableOpacity } from "react-native";
+import React, { useContext } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { MainContext } from "../../context/MainContext";
 import axios from "axios";
-import Logo from "../../../assets/logo.png";
-import Background from "../../../assets/background_image.png";
+import { FontAwesome5 } from '@expo/vector-icons';
+import { AntDesign } from '@expo/vector-icons';
 
 const UserProfile = () => {
-  const navigation = useNavigation();
-  const { user, isLogedIn, setIsLogedIn, profile } = useContext(MainContext);
 
-  //   useEffect(() => {
-  //     if (isLogedIn) {
-  //         console.log("use efect Login isLogedIn");
-  //         console.log(user);
-  //         console.log(profile);
-  //     }
-  //     console.log(isLogedIn);
-  // }, [isLogedIn, setIsLogedIn]);
+  const screen = useWindowDimensions();
+
+  const navigation = useNavigation();
+
+  const { user, isLogedIn, setIsLogedIn, profile } = useContext(MainContext);
 
   const logout = async () => {
     try {
@@ -34,62 +29,67 @@ const UserProfile = () => {
 
       navigation.navigate("Home");
     } catch (err) {
-      console.log(err);
+      alert(err);
     }
   };
 
   return (
-    <SafeAreaView style={{ flex: 1 }}>
-      <View style={styles.container}>
-        <View style={styles.header}>
-          <Image source={Logo} style={styles.logo} alt="Logo" />
-          <Image
-            source={{
-              uri: "https://img.icons8.com/external-kiranshastry-gradient-kiranshastry/64/000000/external-shopping-cart-interface-kiranshastry-gradient-kiranshastry.png",
-            }}
-            style={styles.logo}
-          />
+    <View >
+      <View style={[styles.container, { width: screen.width, height: 200 }]}>
+        <View style={styles.viewimg} >
+          <FontAwesome5 style={styles.user} name="user" size={90} color="#aaaaaa" />
         </View>
-
-        <Image source={Background} style={styles.background} alt="Background" />
-
-        <View style={styles.body}>
-          <Image
-            source={{
-              uri: "https://images.unsplash.com/photo-1518577915332-c2a19f149a75?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=862&q=80",
-            }}
-            style={styles.profile}
-          />
-          <View style={styles.textInput}>
-            <TextInput
-              style={styles.input}
-              placeholder="Name"
-              keyboardType="default"
-            />
-            <TextInput
-              style={styles.input}
-              placeholder="E-Mail"
-              keyboardType="email-address"
-            />
-            <TextInput
-              style={styles.input}
-              placeholder="Password"
-              keyboardType="default"
-            />
-          </View>
-        </View>
-
-        <View style={styles.bottomView}>
-          <Button onPress={() => navigation.navigate("Login")} title="Login" />
-          <Button
-            onPress={() => navigation.navigate("Signin")}
-            title="Sign In"
-          />
-          <Button onPress={() => navigation.navigate("Home")} title="Home" />
-          <Button onPress={() => logout()} title="Disconnect" />
-        </View>
+        <Text style={styles.usertextprofile}>Profile</Text>
+        <Text style={styles.usertext}>{profile.fullname}</Text>
       </View>
-    </SafeAreaView>
+
+      <View style={[styles.container2, { width: screen.width, height: 200 }]}>
+        {isLogedIn ?
+          <View>
+
+            <View style={styles.profile}>
+              <Text style={styles.profiletext}>General</Text>
+              <View style={styles.general}>
+                <View>
+                  <Text style={styles.generaltext}>Profile settings</Text>
+                  <Text style={styles.generalsub}>Update and modify your profile</Text>
+                </View>
+                <AntDesign name="right" size={18} color="#aaaaaa" />
+              </View>
+              <View style={styles.general}>
+                <View>
+                  <Text style={styles.generaltext}>Privacy</Text>
+                  <Text style={styles.generalsub}>Change your password</Text>
+                </View>
+                <AntDesign name="right" size={18} color="#aaaaaa" />
+              </View>
+              <View style={styles.general}>
+                <View>
+                  <Text style={styles.generaltext}>Settings</Text>
+                  <Text style={styles.generalsub}>Personalize and change your preferences</Text>
+                </View>
+                <AntDesign name="right" size={18} color="#aaaaaa" />
+              </View>
+            </View>
+
+            
+              <TouchableOpacity onPress={() => logout()} style={styles.button} >
+                <Text style={{ textAlign: "center" }}>Disconnect</Text>
+              </TouchableOpacity>
+            
+
+          </View>
+          :
+          <>
+            <TouchableOpacity onPress={() => navigation.navigate("Login")} style={[styles.button, {marginTop:100}]} >
+              <Text style={{ textAlign: "center" }}>Login</Text>
+            </TouchableOpacity>
+          </>
+          // <Button onPress={() => navigation.navigate("Login")} title="Login" />
+        }
+      </View>
+
+    </View >
   );
 };
 
@@ -97,45 +97,75 @@ export default UserProfile;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    backgroundColor: "#97c3e7"
   },
-  bottomView: {
-    width: "100%",
+  container2: {
+    // zIndex: 1,
+  },
+  viewimg: {
     position: "absolute",
-    bottom: 0,
+    top: 100,
+    left: 110,
+    width: 144,
+    height: 144,
+    borderRadius: 100,
+    backgroundColor: "#eeeeee",
+    alignItems: "center",
   },
-  header: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    marginTop: 10,
-  },
-  logo: {
-    width: 100,
-    height: 100,
-  },
-  background: {
-    width: "100%",
-    height: 200,
+  user: {
     marginTop: 20,
   },
+  usertext: {
+    textAlign: "center",
+    top: 247,
+    fontSize: 18,
+    color: "#000000",
+    fontWeight: "bold",
+  },
+  usertextprofile: {
+    top: 40,
+    fontSize: 18,
+    color: "#ffffff",
+    fontWeight: "bold",
+    letterSpacing: 5,
+    textAlign: "center"
+  },
   profile: {
+    marginTop: 120,
+    marginLeft: 20,
+  },
+  profiletext: {
+    fontSize: 18,
+    margin: 3,
+    color: "#aaaaaa",
+    fontWeight: "bold",
+  },
+  button: {
     width: 100,
-    height: 100,
-    borderRadius: 360,
-    marginTop: 40,
-  },
-  body: {
-    flexDirection: "row",
-    marginTop: 30,
-  },
-  input: {
     height: 40,
-    width: 200,
-    margin: 12,
-    borderWidth: 1,
+    backgroundColor: "#97c3e7",
+    borderRadius: 5,
     padding: 10,
+    elevation: 2,
+    alignSelf: "center",
+    marginTop: 10
   },
-  textInput: {
-    flexDirection: "column",
+  general: {
+    backgroundColor: "#fff",
+    width: 300,
+    height: 60,
+    margin: 3,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
   },
+  generaltext: {
+    fontSize: 15,
+    fontWeight: "bold",
+    padding: 5
+  },
+  generalsub: {
+    color: "#aaaaaa",
+    marginLeft: 5
+  }
 });

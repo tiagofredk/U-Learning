@@ -36,20 +36,12 @@ export default Module1
 
 const styles = StyleSheet.create({
   container:{
-    // flex: 1,
-    // marginTop:10,
     justifyContent:"center",
-    alignItems: "center"
-  },
-  img: {
-    // width: 340,
-    // height: 200
+    alignItems: "center",
   },
   h1: {
     // fontFamily:"PlayfairDisplay_600SemiBold",
     fontSize:23,
-    padding:0,
-    margin: 0
     // color:"#493d8a",
   },
   text: {

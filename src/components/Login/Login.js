@@ -70,7 +70,8 @@ const Login = () => {
         } else {
 
           let fullname = res.data.fullname;
-          setUser(res.data.username)
+          // Split the firts name from fullname and set as user name
+          setUser(res.data.fullname.split(' ').slice(0, -1).join(' '))
 
           let userProfile = { fullname, email }
 

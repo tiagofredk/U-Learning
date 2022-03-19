@@ -1,16 +1,13 @@
 import React, { useState } from 'react';
 import { StyleSheet } from 'react-native';
-
-import { useNavigation } from '@react-navigation/native';
-
 import { Formik } from 'formik';
 import * as Yup from 'yup';
-
 import FormContainer from '../Login/FormContainer';
 import FormInput from '../Login/FormInput';
 import FormSubmitButton from '../Login/FormSubmitButton';
 import axios from 'axios';
 import FormHeader from '../Login/FormHeader';
+import { useNavigation } from '@react-navigation/native';
 
 const validationSchema = Yup.object({
   fullname: Yup.string()
@@ -40,7 +37,7 @@ const validationSchema = Yup.object({
       const [error, setError] = useState('');
       
       const { fullname, email, password, confirmPassword } = userInfo;
-
+      console.log(userInfo);
       const signUp = async (values, formikActions) => {
         const res = await axios.post('https://ulearning-backend.vercel.app/adduser', {
           ...values,
