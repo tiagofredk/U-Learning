@@ -1,7 +1,7 @@
 import { Button, StyleSheet, View, Text, useWindowDimensions, TouchableOpacity } from "react-native";
 import React, { useContext } from "react";
 import { useNavigation } from "@react-navigation/native";
-import { SafeAreaView } from "react-native-safe-area-context";
+// import { SafeAreaView } from "react-native-safe-area-context";
 import { MainContext } from "../../context/MainContext";
 import axios from "axios";
 import { FontAwesome5 } from '@expo/vector-icons';
@@ -13,7 +13,7 @@ const UserProfile = () => {
 
   const navigation = useNavigation();
 
-  const { user, isLogedIn, setIsLogedIn, profile, setProfile } = useContext(MainContext);
+  const { setToken, user, isLogedIn, setIsLogedIn, profile, setProfile } = useContext(MainContext);
 
   const logout = async () => {
     try {
@@ -26,8 +26,8 @@ const UserProfile = () => {
       );
 
       setIsLogedIn(false);
-      setProfile(fullname="")
-      setProfile(email="")
+      setProfile("");
+      setToken("");
       
       navigation.navigate("Home");
     } catch (err) {
@@ -82,7 +82,7 @@ const UserProfile = () => {
 
           :
           
-            <TouchableOpacity onPress={() => navigation.navigate("Login")} style={[styles.button, {marginTop:100}]} >
+            <TouchableOpacity onPress={() => navigation.navigate("LoginDecision")} style={[styles.button, {marginTop:100}]} >
               <Text style={{ textAlign: "center" }}>Login</Text>
             </TouchableOpacity>
           

@@ -32,17 +32,15 @@ const LoginDecision = () => {
         const CLIENT_ID = "516240520256-ddhs8pn9v92a7ba30h4q62j5t480cf4r.apps.googleusercontent.com";
         const REDIRECT_URI = "https://auth.expo.io/@tiagodev/ulearning";
         const RESPONSE_TYPE = "token";
-        const SCOPE = encodeURIComponent("profile email")
+        const SCOPE = encodeURIComponent("profile email");
 
         const authUrl = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}&scope=${SCOPE}`;
         const { type, params } = await AuthSession.startAsync({ authUrl });
         if (type === "success") {
-
-            setToken = params.access_token
-            console.log(token)
-            
+            console.log("Received TOKEN from Google");
+            setToken(params.access_token);
         }
-        navigation.navigate("Home")
+        navigation.navigate("Home");
     }
 
     if (!fontsLoaded) {

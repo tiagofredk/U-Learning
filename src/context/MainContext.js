@@ -33,14 +33,14 @@ export const MainContextProvider = ({ children }) => {
 
         setIsLogedIn(true);
         // Split the firts name from fullname and set as user name
-        setUser(data.data.session.user.fullname.split(' ').slice(0, -1).join(' '))
+        setUser(data.data.session.user.fullname.split(' ').slice(0, -1).join(' '));
         setProfile(userProfile);
 
         console.log("context fetch authentication response: SUCCESS")
 
-      } else if (token) {
+      } else if (token != "") {
 
-        const response = await axios.get(`https://www.googleapis.com/oauth2/v2/userinfo?alt?json&access_token=${params.access_token}`);
+        const response = await axios.get(`https://www.googleapis.com/oauth2/v2/userinfo?alt?json&access_token=${token}`);
 
         const fullname = response.data.name;
         const email = response.data.email;
@@ -60,7 +60,7 @@ export const MainContextProvider = ({ children }) => {
     }
     sincronize()
 
-  }, [isLogedIn, user]);
+  }, [isLogedIn, user, token]);
 
   //   function addItemToCart(id){
   //     const product = getProduct(id);
@@ -107,9 +107,6 @@ export const MainContextProvider = ({ children }) => {
         setItems,
         token,
         setToken
-        // getItemsCount, 
-        // addItemToCart, 
-        // getTotalPrice
       }}
     >
       {children}
