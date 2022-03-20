@@ -1,5 +1,7 @@
 {
     "name": "ulearning",
+    "slug": "ulearning",
+    "scheme": "ulearning",
     "version": "1.0.0",
     "main": "node_modules/expo/AppEntry.js",
     "scripts": {
@@ -20,7 +22,9 @@
         "axios": "^0.26.0",
         "expo": "~44.0.0",
         "expo-app-loading": "~1.3.0",
+        "expo-auth-session": "~3.5.0",
         "expo-font": "~10.0.4",
+        "expo-random": "~12.1.1",
         "expo-status-bar": "~1.2.0",
         "expo-updates": "~0.11.6",
         "formik": "^2.2.9",

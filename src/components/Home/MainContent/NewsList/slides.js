@@ -2,13 +2,8 @@ export default [
     {
         id: "1",
         title: "GitHub Advisory Database now accepts community contributions",
-<<<<<<< HEAD
-        description: "Develop your coding skils",
-        image: require("../img/undraw1.png"),
-=======
         description: "GitHub is opening its Advisory Database to community contributions to help further secure software supply chains. One vulnerability can have a devastating “domino effect” on software across the globe. With the use of open-source increasing, so does the threat of a vast amount of software being compromised.  GitHub launched its Advisory Database almost two years ago. As the largest database of vulnerabilities in software dependencies in the world, it’s become an invaluable resource.  Until now, the database has been maintained solely by GitHub’s teams of security researchers. However, GitHub believes it can become a more powerful resource with the help of the community.  “There are community members with additional insights and intelligence on CVEs that do not have a place to share this knowledge,” explains GitHub in a blog post.  To that end, GitHub is publishing the full contents of the Advisory Database to a new public repository and launching a user interface for making contributions.  The community is able to contribute by navigating to the advisory they wish to contribute to and then submit their research through the “suggest improvements for this vulnerability” workflow. GitHub believes that free and open security data is critical to empowering the industry as a whole to best secure our software supply chains, says the company.",
         image: require("../img/github.png"),
->>>>>>> news
     },
     {
         id: "2",

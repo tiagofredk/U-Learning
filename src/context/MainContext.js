@@ -1,34 +1,35 @@
 import axios from "axios";
 import React, { useContext, useEffect, useState, createContext } from "react";
-import { getProduct } from "../components/Course/screens/ProductsService";
+// import { getProduct } from "../components/Course/screens/ProductsService";
 
 export const MainContext = createContext();
 
 export const MainContextProvider = ({ children }) => {
   const [user, setUser] = useState("");
-  const [isLogedIn, setIsLogedIn ] = useState(false);
+  const [isLogedIn, setIsLogedIn] = useState(false);
   const [profile, setProfile] = useState({});
   const [items, setItems] = useState([]);
+  const [token, setToken] = useState("");
 
-  useEffect( () =>  {
+  useEffect(() => {
 
-    async function sincronize(){
+    async function sincronize() {
 
-      let config ={
-        headers:{
+      let config = {
+        headers: {
           "content-type": "aplication/json"
         }
       }
       let data = await axios.get(
-        "https://ulearning-backend.vercel.app/verifytoken", 
+        "https://ulearning-backend.vercel.app/verifytoken",
         config
-        );
-      
-      if(data.data.message === "success"){
-        
+      );
+
+      if (data.data.message === "success") {
+
         const fullname = data.data.session.user.fullname;
         const email = data.data.session.user.email;
-        const userProfile={fullname, email};
+        const userProfile = { fullname, email };
 
         setIsLogedIn(true);
         // Split the firts name from fullname and set as user name
@@ -36,62 +37,79 @@ export const MainContextProvider = ({ children }) => {
         setProfile(userProfile);
 
         console.log("context fetch authentication response: SUCCESS")
-          
-      }else{
+
+      } else if (token) {
+
+        const response = await axios.get(`https://www.googleapis.com/oauth2/v2/userinfo?alt?json&access_token=${params.access_token}`);
+
+        const fullname = response.data.name;
+        const email = response.data.email;
+        let userProfile = { fullname, email }
+        
+        setIsLogedIn(true);
+        setProfile(userProfile);
+        setUser(response.data.given_name);
+        console.log("context fetch authentication response: AUTHENTICATED with Google account")
+
+      } else {
+
         setIsLogedIn(false);
         console.log("context fetch authentication response: NOT AUTHENTICATED")
+
       }
     }
     sincronize()
 
   }, [isLogedIn, user]);
 
-  function addItemToCart(id){
-    const product = getProduct(id);
-    setItems((prevItems)=>{
-        const item = prevItems.find((item)=>(item.id == id));
-        if(!item){
-            return[...prevItems,{
-                id,
-                qty: 1,
-                product,
-                totalPrice: product.price
-            }]
-        }
-        else{
-            return prevItems.map((item)=>{
-                if(item.id == id){
-                    item.qty++;
-                    item.totalPrice += product.price;
-                }
-                return item;
-            });
-        }
-    });
-}
+  //   function addItemToCart(id){
+  //     const product = getProduct(id);
+  //     setItems((prevItems)=>{
+  //         const item = prevItems.find((item)=>(item.id == id));
+  //         if(!item){
+  //             return[...prevItems,{
+  //                 id,
+  //                 qty: 1,
+  //                 product,
+  //                 totalPrice: product.price
+  //             }]
+  //         }
+  //         else{
+  //             return prevItems.map((item)=>{
+  //                 if(item.id == id){
+  //                     item.qty++;
+  //                     item.totalPrice += product.price;
+  //                 }
+  //                 return item;
+  //             });
+  //         }
+  //     });
+  // }
 
-function getItemsCount(){
-return items.reduce((sum,item)=>(sum + item.qty), 0)
-}
+  // function getItemsCount(){
+  // return items.reduce((sum,item)=>(sum + item.qty), 0)
+  // }
 
-function getTotalPrice(){
-return items.reduce((sum, item)=>(sum + item.totalPrice), 0);
-}
+  // function getTotalPrice(){
+  // return items.reduce((sum, item)=>(sum + item.totalPrice), 0);
+  // }
 
   return (
     <MainContext.Provider
       value={{
         user,
         setUser,
-        isLogedIn, 
+        isLogedIn,
         setIsLogedIn,
-        profile, 
+        profile,
         setProfile,
-        items, 
-        setItems, 
-        getItemsCount, 
-        addItemToCart, 
-        getTotalPrice
+        items,
+        setItems,
+        token,
+        setToken
+        // getItemsCount, 
+        // addItemToCart, 
+        // getTotalPrice
       }}
     >
       {children}

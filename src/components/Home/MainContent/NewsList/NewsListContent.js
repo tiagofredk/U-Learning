@@ -50,17 +50,10 @@ const NewsListContent = ({ item }) => {
                 <Pressable style={styles.pressable} onPress={() => setModalVisible(true)}>
                     <View style={[styles.container, styles.card, styles.elevation]}>
                         <Image source={item.image} style={[styles.image]} />
-<<<<<<< HEAD
-                    <View style={{ flex: 0.3 }} >
-                        <Text style={styles.title} >{item.title} </Text>
-                        {/* <Text style={styles.description}>{item.description} </Text> */}
-                    </View>
-=======
                     </View>
                     <View style={{ flex: 0.3 }} >
                         <Text style={styles.title} >{item.title} </Text>
                         {/* <Text style={styles.description}>{item.description} </Text> */}
->>>>>>> news
                     </View>
                 </Pressable>
             </View>
