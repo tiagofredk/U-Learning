@@ -1,14 +1,13 @@
-import { StyleSheet, Text, View, Image, Modal, Pressable } from 'react-native'
+import { StyleSheet, Text, View, Image, Modal, Pressable, ScrollView } from 'react-native'
 import React, { useState } from 'react'
-
 import {
     useFonts,
     PlayfairDisplay_400Regular,
     PlayfairDisplay_500Medium,
     PlayfairDisplay_600SemiBold,
 } from '@expo-google-fonts/playfair-display';
-
 import AppLoading from 'expo-app-loading';
+import { MaterialIcons } from '@expo/vector-icons';
 
 const NewsListContent = ({ item }) => {
 
@@ -25,27 +24,45 @@ const NewsListContent = ({ item }) => {
         return <AppLoading />
     } else {
         return (
-            <View>
+            <View style={{}}>
                 <Modal
                     visible={modalVisible}
                     animationType="slide"
                     onRequestClose={() => setModalVisible(false)}
                 >
-                    <View>
-                        <Text>Hello</Text>
-                    </View>
+                    <ScrollView style={{ margin: 20 }}>
+                        <Text style={[styles.title, { fontWeight: "bold" }]} >{item.title} </Text>
+                        <Text style={{ marginTop: 15, }}>{item.description}</Text>
+                        <Text style={{ marginTop: 15 }}>{item.text}</Text>
+                    </ScrollView>
+                    <Pressable
+                        onPressIn={() => setModalVisible(false)}
+                        style={{
+                            flexDirection: "row",
+                            alignSelf: "center",
+                            marginBottom: 20
+                        }}>
+                        <MaterialIcons name="arrow-back-ios" size={24} color="black" />
+                        <Text>Back</Text>
+                    </Pressable>
                 </Modal>
 
-                <Pressable onPress={() => setModalVisible(true)}>
+                <Pressable style={styles.pressable} onPress={() => setModalVisible(true)}>
                     <View style={[styles.container, styles.card, styles.elevation]}>
                         <Image source={item.image} style={[styles.image]} />
+<<<<<<< HEAD
                     <View style={{ flex: 0.3 }} >
                         <Text style={styles.title} >{item.title} </Text>
                         {/* <Text style={styles.description}>{item.description} </Text> */}
                     </View>
+=======
+                    </View>
+                    <View style={{ flex: 0.3 }} >
+                        <Text style={styles.title} >{item.title} </Text>
+                        {/* <Text style={styles.description}>{item.description} </Text> */}
+>>>>>>> news
                     </View>
                 </Pressable>
-
             </View>
         )
     }
@@ -54,8 +71,15 @@ const NewsListContent = ({ item }) => {
 export default NewsListContent
 
 const styles = StyleSheet.create({
+    pressable: {
+        height: 300,
+        width: 180,
+        marginRight: 20,
+        marginLeft: 20,
+        alignItems: "center"
+    },
     container: {
-        height: 200,
+        height: 150,
         width: 180,
         marginHorizontal: 20,
     },

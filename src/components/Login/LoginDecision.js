@@ -41,7 +41,7 @@ const LoginDecision = () => {
                     onPress={() => navigation.navigate("Login")}
                 >
                     <Ionicons name="ios-logo-google" size={24} color={'#414141'} />
-                    <Text style={styles.text} >Sign in with Google</Text>
+                    <Text style={styles.text} >Sign in with a Google account</Text>
                 </TouchableOpacity>
                 <View style={styles.sigin} >
                     <Text>New Here?</Text>
