@@ -1,7 +1,7 @@
 export default [
     {
         id: "1",
-        title: "New courses available",
+        title: "GitHub Advisory Database now accepts community contributions",
         description: "Develop your coding skils",
         image: require("../img/undraw1.png"),
     },
