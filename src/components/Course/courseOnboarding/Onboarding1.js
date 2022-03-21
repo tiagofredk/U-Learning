@@ -1,7 +1,7 @@
 import React, {useRef, useState} from "react";
 import { StyleSheet, Text, View, FlatList, Animated, Button } from 'react-native'
 
-import slides from './slides'
+import slides from './slides';
 import OnboardItem from './OnboardItem'
 import Paginator from './Paginator'
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
@@ -57,14 +57,15 @@ const Onboarding1 = () => {
       <View style={styles.tab}>
           
         <Text style={styles.button} onPress={()=> navigation.navigate ("Courses") }>
-          <MaterialIcons name="storefront" size={40}  color={'red'} /></Text>
+          <MaterialIcons name="storefront" size={40}  color='#ADD8E6' />
+          </Text>
         <Text style={styles.button} onPress={()=> navigation.navigate ("Chat") }>
-          <AntDesign name="wechat" size={40} color="red" />
+          <AntDesign name="wechat" size={40} color="#ADD8E6" />
         </Text>
-        <Text style={styles.button} onPress={()=> navigation.navigate ("News") }>
-          <Entypo name="news" size={40} color="red" /></Text>
+        <Text style={styles.button} onPress={()=> navigation.navigate ("Classes") }>
+          <Entypo name="news" size={40} color="#ADD8E6" /></Text>
         <Text style={styles.button} onPress={()=> navigation.navigate ("User") }>
-          <AntDesign name="user" size={40} color="red" />
+          <AntDesign name="user" size={40} color="#ADD8E6" />
         </Text>
       </View>
 
@@ -78,17 +79,16 @@ export default Onboarding1
 
 const styles = StyleSheet.create({
   tab:{
-    backgroundColor: '#646464',
+    backgroundColor: '#ffffff',
     flexDirection: 'row',
-    padding: 10, 
-    alignItems: 'stretch', 
-    textAlign: 'center',
+    padding: 3, 
+    justifyContent: 'space-around'
   },
-  courses:{
-    backgroundColor: 'red',
+  button:{
+    backgroundColor: '#ffffff',
     borderRadius: 4,
     fontWeight:'bold',
-    fontSize: 20,
+    fontSize: 10,
     color: 'white',
     textAlign: "center",
   },
