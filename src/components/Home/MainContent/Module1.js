@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, Text, View, Image } from 'react-native'
+import { StyleSheet, Text, View, Image, useWindowDimensions } from 'react-native'
 import {
   useFonts,
   PlayfairDisplay_400Regular,
@@ -8,7 +8,11 @@ import {
 } from '@expo-google-fonts/playfair-display';
 import AppLoading from 'expo-app-loading';
 
+
 const Module1 = () => {
+  
+  const width = useWindowDimensions()
+  
   let [fontsLoaded] = useFonts({
     PlayfairDisplay_400Regular,
     PlayfairDisplay_500Medium,
@@ -20,7 +24,7 @@ const Module1 = () => {
   } else {
     return (
       <View style={styles.container}>
-        <Image style={styles.img} source={require("../img/top.png")} />
+        <Image style={{width: width.width, height:200}} source={require("../img/top.png")} />
         <Text style={styles.h1} >The digital world moves quickly!</Text>
         <Text style={styles.text}>Courses designed to help you reach your goals.</Text>
       </View>
@@ -32,16 +36,12 @@ export default Module1
 
 const styles = StyleSheet.create({
   container:{
-    marginTop:10
-  },
-  img: {
-    width: 350,
-    height: 200
+    justifyContent:"center",
+    alignItems: "center",
   },
   h1: {
-    fontFamily:"PlayfairDisplay_600SemiBold",
+    // fontFamily:"PlayfairDisplay_600SemiBold",
     fontSize:23,
-    padding:5,
     // color:"#493d8a",
   },
   text: {

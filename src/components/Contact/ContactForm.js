@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { StyleSheet } from 'react-native';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
@@ -8,6 +8,7 @@ import FormSubmitButton from '../Login/FormSubmitButton';
 import axios from 'axios';
 import FormHeader from '../Login/FormHeader';
 import { useNavigation } from '@react-navigation/native';
+import FormInputMessage from './FormInputMessage';
 import Nav from '../utils/Nav';
 
 const validationSchema = Yup.object({
@@ -16,37 +17,31 @@ const validationSchema = Yup.object({
     .min(3, 'Invalid name!')
     .required('Name is required!'),
   email: Yup.string().email('Invalid email!').required('Email is required!'),
-  password: Yup.string()
-    .trim()
-    .min(8, 'Password is too short!')
-    .required('Password is required!'),
-  confirmPassword: Yup.string().equals(
-    [Yup.ref('password'), null],
-    'Password does not match!'
-  ),
 });
 
-const SignupForm = () => {
+const ContactForm = () => {
+
   const navigation = useNavigation();
+
   const userInfo = {
-    fullname: '',
-    email: '',
-    password: '',
-    confirmPassword: '',
+    fullname: "",
+    email: "",
+    telephone: "",
+    message: "",
   };
 
   const [error, setError] = useState('');
 
-  const { fullname, email, password, confirmPassword } = userInfo;
-  console.log(userInfo);
-  const signUp = async (values, formikActions) => {
-    const res = await axios.post('https://ulearning-backend.vercel.app/adduser', {
+  const { fullname, email, telephone, message } = userInfo;
+
+  const sendMessage = async (values, formikActions) => {
+    const res = await axios.post('https://ulearning-backend.vercel.app/message', {
       ...values,
     });
 
     if (res.data.message) {
-      alert("Success, you sign up. please login")
-      navigation.navigate("Login")
+      alert("Success, Message sent")
+      navigation.navigate("HomeStack")
     }
 
     formikActions.resetForm();
@@ -55,17 +50,16 @@ const SignupForm = () => {
 
   return (
     <>
-
       <FormContainer>
         <FormHeader
-          leftHeading='Create an Account'
+          leftHeading='Contact Formular'
           rightHeading='Back'
-          subHeading='By using our services you are agreeing to our Terms and Privacy Statament'
+          subHeading='Please fill with you basic information and one of our representative person will be in touch'
         />
         <Formik
           initialValues={userInfo}
           validationSchema={validationSchema}
-          onSubmit={signUp}
+          onSubmit={sendMessage}
         >
           {({
             values,
@@ -76,7 +70,7 @@ const SignupForm = () => {
             handleBlur,
             handleSubmit,
           }) => {
-            const { fullname, email, password, confirmPassword } = values;
+            const { fullname, email, telephone, message } = values;
             return (
               <>
                 <FormInput
@@ -97,29 +91,28 @@ const SignupForm = () => {
                   placeholder='example@email.com'
                 />
                 <FormInput
-                  value={password}
-                  error={touched.password && errors.password}
-                  onChangeText={handleChange('password')}
-                  onBlur={handleBlur('password')}
+                  value={telephone}
+                  error={touched.telephone && errors.telephone}
+                  onChangeText={handleChange('telephone')}
+                  onBlur={handleBlur('telephone')}
                   autoCapitalize='none'
-                  secureTextEntry
-                  label='Password'
-                  placeholder='********'
+                  label='Telephone'
+                  placeholder='telephone'
                 />
-                <FormInput
-                  value={confirmPassword}
-                  error={touched.confirmPassword && errors.confirmPassword}
-                  onChangeText={handleChange('confirmPassword')}
-                  onBlur={handleBlur('confirmPassword')}
+                <FormInputMessage
+                  value={message}
+                  error={touched.message && errors.message}
+                  onChangeText={handleChange('message')}
+                  onBlur={handleBlur('message')}
                   autoCapitalize='none'
-                  secureTextEntry
-                  label='Confirm Password'
-                  placeholder='********'
+                  label='Message'
+                  placeholder='Your message'
                 />
+
                 <FormSubmitButton
                   submitting={isSubmitting}
                   onPress={handleSubmit}
-                  title='Sign up'
+                  title='Send Message'
                 />
               </>
             );
@@ -135,4 +128,4 @@ const styles = StyleSheet.create({
 
 });
 
-export default SignupForm;
+export default ContactForm;

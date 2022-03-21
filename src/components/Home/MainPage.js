@@ -2,7 +2,6 @@ import React from 'react'
 import { StyleSheet, Text, View, ScrollView } from 'react-native';
 import { useContext } from 'react';
 import { MainContext } from '../../context/MainContext';
-import { SafeAreaView } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
 import {
   useFonts,
@@ -28,38 +27,38 @@ export default function MainPage() {
     return <AppLoading />
   } else {
     return (
-      <ScrollView >
-        <SafeAreaView style={styles.container}>
-          <View style={styles.linkbox} >
-            {isLogedIn ?
-              <>
-                <Text style={styles.text}>Hello {user}</Text>
-              </>
-              :
-              <Text style={styles.text} onPress={() => navigation.navigate("LoginDecision")} title="Login">
-                Sign In
-              </Text>
-            }
+      <View style={styles.container}>
+        <View style={styles.linkbox} >
+          {isLogedIn ?
+
+            <Text style={styles.text} onPress={() => navigation.navigate("Account")}>Hello {user}</Text>
+
+            :
+
+            <Text style={styles.text} onPress={() => navigation.navigate("LoginDecision")} title="Login">
+              Sign In
+            </Text>
+          }
+        </View>
+        <ScrollView >
+          <View style={styles.container}>
+            <Module1 />
+            <Text style={styles.courses}>Our Courses</Text>
+            <ListModule />
+            <Text style={styles.news}>News</Text>
+            <ListNewsModule />
           </View>
 
-          <Module1/>
-          <Text style={styles.courses}>Our Courses</Text>
-          <ListModule/>
-          <Text style={styles.news}>News</Text>
-          <ListNewsModule/>
-        </SafeAreaView>
-
-      </ScrollView>
+        </ScrollView>
+      </View>
     )
   }
 }
 
 const styles = StyleSheet.create({
   container: {
-    // flex: 1,
+    marginTop: 3,
     backgroundColor: "#f5f5f5",
-    // alignItems: 'center',
-    // justifyContent: 'center',
   },
   text: {
     fontSize: 18,
@@ -69,10 +68,10 @@ const styles = StyleSheet.create({
     color: "#3b3b3b",
   },
   linkbox: {
-    // width: 250,
-    marginTop: 10,
+    marginTop: 30,
     marginRight: 10,
     alignItems: "flex-end",
+    backgroundColor: "#f5f5f5"
   },
   courses: {
     marginTop: 30,
