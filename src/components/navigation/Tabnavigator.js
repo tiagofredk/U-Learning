@@ -20,21 +20,21 @@ const Tabnavigator = () => {
     return (
     <Tab.Navigator screenOptions={{ 
         headerShown: false,
-        tabBarShowLabel:true
+        tabBarShowLabel:false
       }}>
         <Tab.Screen name="Home" component={MainPage} options={{
             tabBarIcon: ({color, size}) => (
-               <Ionicons name="ios-home-outline" size={size} color={'#ADD8E6'} />
+               <Ionicons name="ios-home-outline" size={size} color={'#aaaaaa'} />
                 )
         }} />
         <Tab.Screen name="Courses" component={Courses} options={{
             tabBarIcon: ({color, size}) => (
-                <MaterialIcons name="storefront" size={size} color={'#ADD8E6'} />
+                <MaterialIcons name="storefront" size={size} color={'#aaaaaa'} />
             )
         }}/>       
         <Tab.Screen name="Account" component={UserProfile} options={{
             tabBarIcon: ({color, size}) => (
-                <AntDesign name="user" size={size} color={'#ADD8E6'} />
+                <AntDesign name="user" size={size} color={'#aaaaaa'} />
             )
         }}/>
       </Tab.Navigator>

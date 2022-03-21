@@ -28,7 +28,7 @@ const UserProfile = () => {
       setIsLogedIn(false);
       setProfile("");
       setToken("");
-      
+
       navigation.navigate("Home");
     } catch (err) {
       alert(err);
@@ -73,19 +73,28 @@ const UserProfile = () => {
                 <AntDesign name="right" size={18} color="#aaaaaa" />
               </View>
             </View>
-            
-              <TouchableOpacity onPress={() => logout()} style={styles.button} >
-                <Text style={{ textAlign: "center" }}>Disconnect</Text>
-              </TouchableOpacity>
-            
+
+            <TouchableOpacity onPress={() => logout()} style={styles.button} >
+              <Text style={{ textAlign: "center" }}>Disconnect</Text>
+            </TouchableOpacity>
+            <View style={styles.impressum}>
+              <Text>Want to know more about us? </Text>
+              <Text style= {{fontWeight:"bold", color:"#493d8a"}} onPress={() => navigation.navigate("Impressum")}>Impressum</Text>
+            </View>
           </View>
 
           :
-          
-            <TouchableOpacity onPress={() => navigation.navigate("LoginDecision")} style={[styles.button, {marginTop:100}]} >
+          <>
+            <TouchableOpacity onPress={() => navigation.navigate("LoginDecision")} style={[styles.button, { marginTop: 100 }]} >
               <Text style={{ textAlign: "center" }}>Login</Text>
             </TouchableOpacity>
-          
+
+            <View style={styles.impressum}>
+              <Text>Want to know more about us? </Text>
+              <Text style= {{fontWeight:"bold", color:"#493d8a"}} onPress={() => navigation.navigate("Impressum")}>Impressum</Text>
+            </View>
+          </>
+
         }
       </View>
 
@@ -167,5 +176,10 @@ const styles = StyleSheet.create({
   generalsub: {
     color: "#aaaaaa",
     marginLeft: 5
+  },
+  impressum: {
+    marginTop: 20,
+    flexDirection: "row",
+    justifyContent: "center"
   }
 });
